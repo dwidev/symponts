@@ -3,6 +3,7 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Progress } from "@/components/ui/progress";
+import { cn } from "@/lib/utils";
 import { useState } from "react";
 import { BiArrowBack } from "react-icons/bi";
 
@@ -25,7 +26,11 @@ export default function OnBoardingPage() {
         <h2> We&apos;re to help analyze your health symponts</h2>
         <div className="flex flex-row justify-center items-center mt-10">
           {step > 1 && (
-            <BiArrowBack className="mr-3" size={25} onClick={prev} />
+            <BiArrowBack
+              className="mr-3 cursor-pointer"
+              size={25}
+              onClick={prev}
+            />
           )}
           <Progress value={(step * 100) / maxStep} className="" />
           <p className="ml-2">
@@ -61,6 +66,7 @@ export default function OnBoardingPage() {
                   type="number"
                   className="w-30"
                   maxLength={3}
+                  max={3}
                 />
                 <p className="ml-3 text-sm">Years</p>
               </div>
@@ -69,10 +75,27 @@ export default function OnBoardingPage() {
           {step == 3 && (
             <>
               <label>
-                How old are you? Your age helps us provide more accurate
-                results.
+                What is your gender? This is important for accurate health
+                analysis.
               </label>
-              <Input placeholder="Insert Age" className="mt-3 w-1/2" />
+              <div className="mt-4">
+                {["Male", "Female"].map((e) => {
+                  const isMale = e.toLowerCase() == "male";
+                  return (
+                    <div
+                      className={cn(
+                        "bg-slate-200 p-4 rounded mb-4 cursor-pointer hover:bg-slate-300 border-2",
+                        isMale
+                          ? "border-slate-400 bg-slate-300"
+                          : "border-transparent bg-slate-100"
+                      )}
+                      key={e}
+                    >
+                      <p className={isMale ? "font-bold" : ""}>{e}</p>
+                    </div>
+                  );
+                })}
+              </div>
             </>
           )}
         </div>
