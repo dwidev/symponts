@@ -7,9 +7,42 @@ import { cn } from "@/lib/utils";
 import { useState } from "react";
 import { BiArrowBack } from "react-icons/bi";
 
+type GenderType = "male" | "female" | null;
+
+interface OnBoardingData {
+  name: string;
+  age: number;
+  gender: GenderType;
+}
+
 export default function OnBoardingPage() {
   const maxStep = 3;
   const [step, setStep] = useState(1);
+  const [value, setValue] = useState<OnBoardingData>({
+    name: "",
+    age: 18,
+    gender: null,
+  });
+
+  function changeValue(e: React.ChangeEvent<HTMLInputElement>) {
+    const { name, value } = e.target;
+
+    setValue((prev) => {
+      return {
+        ...prev,
+        [name]: value,
+      };
+    });
+  }
+
+  function changeGender(value: GenderType) {
+    setValue((prev) => {
+      return {
+        ...prev,
+        gender: value,
+      };
+    });
+  }
 
   function next() {
     setStep((prev) => prev + 1);
@@ -49,8 +82,11 @@ export default function OnBoardingPage() {
               </label>
               <Input
                 id="name"
+                name="name"
                 placeholder="Insert Fullname / Nickname"
                 className="mt-3 w-1/2"
+                value={value.name}
+                onChange={changeValue}
               />
             </>
           )}
@@ -63,10 +99,13 @@ export default function OnBoardingPage() {
               <div className="mt-3 flex flex-row items-center">
                 <Input
                   placeholder="Ex. 24"
+                  name="age"
                   type="number"
                   className="w-30"
                   maxLength={3}
                   max={3}
+                  value={value.age}
+                  onChange={changeValue}
                 />
                 <p className="ml-3 text-sm">Years</p>
               </div>
@@ -80,9 +119,12 @@ export default function OnBoardingPage() {
               </label>
               <div className="mt-4">
                 {["Male", "Female"].map((e) => {
-                  const isMale = e.toLowerCase() == "male";
+                  const isMale = e.toLowerCase() == value.gender;
                   return (
                     <div
+                      onClick={() =>
+                        changeGender(e.toLowerCase() as GenderType)
+                      }
                       className={cn(
                         "bg-slate-200 p-4 rounded mb-4 cursor-pointer hover:bg-slate-300 border-2",
                         isMale
