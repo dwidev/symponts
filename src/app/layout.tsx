@@ -23,7 +23,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${inter.variable} antialiased `}>
         <main className="w-screen h-screen flex flex-col justify-center items-center ">
-          <section className="max-w-2xl">{children}</section>
+          <section className="w-2xl max-md:w-2xs">{children}</section>
         </main>
       </body>
     </html>
