@@ -128,12 +128,14 @@ export default function OnBoardingPage() {
                 {["Male", "Female"].map((e) => {
                   const isMale = e.toLowerCase() == value.gender;
                   return (
-                    <div
+                    <Button
+                      variant="secondary"
+                      size="lg"
                       onClick={() =>
                         changeGender(e.toLowerCase() as GenderType)
                       }
                       className={cn(
-                        "bg-slate-200 p-4 rounded mb-4 cursor-pointer hover:bg-slate-300 border-2",
+                        "bg-slate-200 p-4 rounded mb-4 cursor-pointer hover:bg-slate-300 border-2 w-full justify-start",
                         isMale
                           ? "border-slate-400 bg-slate-300"
                           : "border-transparent bg-slate-100"
@@ -141,7 +143,7 @@ export default function OnBoardingPage() {
                       key={e}
                     >
                       <p className={isMale ? "font-bold" : ""}>{e}</p>
-                    </div>
+                    </Button>
                   );
                 })}
               </div>
