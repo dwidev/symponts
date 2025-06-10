@@ -1,10 +1,15 @@
+"use client";
+
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Slider } from "@/components/ui/slider";
 import { cn } from "@/lib/utils";
+import { useRouter } from "next/navigation";
 import React from "react";
 
 export default function MedicalHistoryPage() {
+  const { push } = useRouter();
+
   return (
     <>
       <h1 className="mt-5 text-2xl mb-10">Medical History</h1>
@@ -92,7 +97,9 @@ export default function MedicalHistoryPage() {
         </p>
       </label>
       <Slider defaultValue={[4]} max={10} step={1} className="w-1/2" />
-      <Button className="mt-10">Save</Button>
+      <Button className="mt-10" onClick={() => push("/dashboard")}>
+        Save
+      </Button>
     </>
   );
 }

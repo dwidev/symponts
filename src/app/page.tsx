@@ -31,7 +31,7 @@ export default function Home() {
             </p>
           </CardDescription>
           <Button asChild className="flex flex-row">
-            <Link href="/on-boarding">
+            <Link href="/personal-infromation">
               <FaGoogle /> Sign in with Google
             </Link>
           </Button>
