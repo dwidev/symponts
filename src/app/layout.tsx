@@ -21,8 +21,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.variable} antialiased `}>
-        <main className="w-screen h-screen flex flex-col justify-center items-center ">
+      <body className={`${inter.variable} antialiased`}>
+        <main className="w-full min-h-screen flex flex-col justify-center items-center ">
           <section className="w-2xl max-md:w-2xs">{children}</section>
         </main>
       </body>
