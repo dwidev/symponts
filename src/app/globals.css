@@ -112,6 +112,12 @@
   --sidebar-ring: oklch(0.556 0 0);
 }
 
+@layer components {
+  .main-layout-container {
+    @apply w-full min-h-screen flex flex-col justify-center items-center;
+  }
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;
