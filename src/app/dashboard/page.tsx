@@ -5,6 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Slider } from "@/components/ui/slider";
 import { FaArrowUp } from "react-icons/fa";
+import { Textarea } from "@/components/ui/textarea";
 
 const painLocations: string[] = [
   "Head",
@@ -76,6 +77,27 @@ export default function DashboardPage() {
               step={1}
               className="w-2xs mr-2.5"
             />
+            <Button
+              size="icon"
+              className="size-7 rounded-full transition hover:scale-105"
+            >
+              <FaArrowUp />
+            </Button>
+          </div>
+        </UserBubble>
+        <AiChatBubble question="Have you taken any medication to treat this?" />
+        <UserBubble>
+          <div className="flex flex-row">
+            <Button variant="outline" className="mr-2">
+              Yes Already
+            </Button>
+            <Button variant="outline">Not Yet</Button>
+          </div>
+        </UserBubble>
+        <AiChatBubble question="Can you describe your current condition?" />
+        <UserBubble>
+          <div className="flex flex-row items-end">
+            <Textarea placeholder="Describe your current condition" className="bg-white w-100 h-30 mr-2.5" />
             <Button
               size="icon"
               className="size-7 rounded-full transition hover:scale-105"
