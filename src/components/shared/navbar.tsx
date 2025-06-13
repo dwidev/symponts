@@ -20,7 +20,7 @@ export default function Navbar() {
 
   return (
     includeNav && (
-      <header className="z-10 top-0 w-full fixed bg-white dark:bg-black">
+      <header className="z-20 top-0 w-full fixed bg-white dark:bg-black">
         <div className="flex flex-row items-center justify-between px-15 py-2">
           <div className="flex flex-row items-center">
             <h1 className="font-bold mr-3">SymptomAI</h1>

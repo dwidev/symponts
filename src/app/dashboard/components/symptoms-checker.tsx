@@ -6,6 +6,7 @@ import { Input } from "@/components/ui/input";
 import { FaArrowUp } from "react-icons/fa";
 import { Textarea } from "@/components/ui/textarea";
 import { Slider } from "@/components/ui/slider";
+import { cn } from "@/lib/utils";
 
 const painLocations: string[] = [
   "Head",
@@ -28,9 +29,18 @@ const painLocations: string[] = [
   "Other",
 ];
 
-export default function SymptomChecker() {
+export default function SymptomChecker({
+  className,
+}: {
+  className?: string | false;
+}) {
   return (
-    <div className="w-full">
+    <div
+      className={cn(
+        "size-full flex flex-col justify-center px-5 py-5",
+        className
+      )}
+    >
       <AiChatBubble question="Where is your pain or discomfort located?" />
       <UserBubble>
         {painLocations.map((e) => {
