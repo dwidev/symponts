@@ -36,17 +36,17 @@ export default function Navbar() {
             <NavigationMenu>
               <NavigationMenuList>
                 <NavigationMenuItem>
-                  <NavigationMenuLink className="px-4 py-2">
+                  <NavigationMenuLink asChild className="px-4 py-2">
                     <Link href="/dashboard">Symptom Checker</Link>
                   </NavigationMenuLink>
                 </NavigationMenuItem>
                 <NavigationMenuItem>
-                  <NavigationMenuLink className="px-4 py-2">
+                  <NavigationMenuLink asChild className="px-4 py-2">
                     <Link href="/medical-history">Health Records</Link>
                   </NavigationMenuLink>
                 </NavigationMenuItem>
                 <NavigationMenuItem>
-                  <NavigationMenuLink>
+                  <NavigationMenuLink asChild>
                     <Link href="/">My Conditions</Link>
                   </NavigationMenuLink>
                 </NavigationMenuItem>
@@ -56,7 +56,7 @@ export default function Navbar() {
             <NavigationMenu>
               <NavigationMenuList>
                 <NavigationMenuItem>
-                  <NavigationMenuTrigger className="bg-transparent p-0 hover:bg-transparent focus:outline-none mx-3">
+                  <NavigationMenuTrigger hiddenIcon={false} className="bg-transparent p-0 hover:bg-transparent focus:outline-none mx-3">
                     <Avatar className="size-10 cursor-pointer">
                       <AvatarImage
                         src="https://github.com/shadcn.png"
@@ -75,7 +75,7 @@ export default function Navbar() {
                       </li>
                       <li>
                         <NavigationMenuLink asChild>
-                          <button>Logout</button>
+                          <Link href="/">Logout</Link>
                         </NavigationMenuLink>
                       </li>
                     </ul>
