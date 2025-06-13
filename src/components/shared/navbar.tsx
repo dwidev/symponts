@@ -17,10 +17,11 @@ import Link from "next/link";
 export default function Navbar() {
   const path = usePathname();
   const includeNav = path.includes("/dashboard");
+
   return (
     includeNav && (
-      <header className="z-10 top-0 sticky bg-white dark:bg-black">
-        <div className="flex flex-row items-center justify-between px-15 py-5">
+      <header className="z-10 top-0 w-full fixed bg-white dark:bg-black">
+        <div className="flex flex-row items-center justify-between px-15 py-2">
           <div className="flex flex-row items-center">
             <h1 className="font-bold mr-3">SymptomAI</h1>
             <button
@@ -56,7 +57,10 @@ export default function Navbar() {
             <NavigationMenu>
               <NavigationMenuList>
                 <NavigationMenuItem>
-                  <NavigationMenuTrigger hiddenIcon={false} className="bg-transparent p-0 hover:bg-transparent focus:outline-none mx-3">
+                  <NavigationMenuTrigger
+                    hiddenIcon={false}
+                    className="bg-transparent p-0 hover:bg-transparent focus:outline-none mx-3"
+                  >
                     <Avatar className="size-10 cursor-pointer">
                       <AvatarImage
                         src="https://github.com/shadcn.png"

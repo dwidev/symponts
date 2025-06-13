@@ -1,122 +1,37 @@
-import React from "react";
-import AiChatBubble from "./components/aichat-bubble";
-import { UserBubble } from "./components/user-bubble";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
-import { Slider } from "@/components/ui/slider";
-import { FaArrowUp } from "react-icons/fa";
-import { Textarea } from "@/components/ui/textarea";
-import { cn } from "@/lib/utils";
-
-const painLocations: string[] = [
-  "Head",
-  "Throat",
-  "Chest",
-  "Stomach",
-  "Back",
-  "Joints",
-  "Abdomen",
-  "Neck",
-  "Shoulders",
-  "Arms",
-  "Legs",
-  "Feet",
-  "Hands",
-  "Skin",
-  "Eyes",
-  "Ears",
-  "Whole body",
-  "Other",
-];
+import { cn } from "@/lib/utils"; // jika kamu pakai clsx/twMerge
+import SymptomChecker from "./components/symptoms-checker";
 
 export default function DashboardPage() {
   const containerWidth = true ? "w-full" : "w-2xl max-md:w-2xs";
 
   return (
-    <main className="font-mono">
-      <section className={cn("py-10", containerWidth)}>
-        <AiChatBubble question="Where is your pain or discomfort located?" />
-        <UserBubble>
-          {painLocations.map((e) => {
-            if (e == "Other") {
-              return (
-                <Input
-                  key={e}
-                  placeholder="type other.."
-                  className="w-32 bg-white"
-                />
-              );
-            }
-            return (
-              <Button
-                variant="outline"
-                className="transition hover:scale-105"
-                key={e}
-              >
-                {e}
-              </Button>
-            );
-          })}
-        </UserBubble>
-        {true && (
-          <>
-            <AiChatBubble question="When did these symptoms start?" />
-            <UserBubble>
-              <div className="flex flex-row items-center">
-                <Input placeholder="When..." className="bg-white mr-2.5" />
-                <Button
-                  size="icon"
-                  className="size-7 rounded-full transition hover:scale-105"
-                >
-                  <FaArrowUp />
-                </Button>
+    <main className="font-mono flex flex-col overflow-hidden">
+      <div className={cn(containerWidth)}>
+        {/* <div className="flex-1 h-screen pt-20 overflow-y-auto px-10">
+          <SymptomChecker />
+          <SymptomChecker />
+        </div> */}
+        <div className="flex flex-row overflow-hidden">
+          <div className="pt-20 h-screen w-full overflow-y-auto bg-slate-100">
+            <div className="flex flex-col justify-center items-center">
+              <div className="w-[50%] flex-1 bg-white">
+                {[...Array(50)].map((e, i) => {
+                  return (
+                    <div key={i}>
+                      <p>ANJAY</p>
+                    </div>
+                  );
+                })}
+                <p>ANJAYYY</p>
               </div>
-            </UserBubble>
-            <AiChatBubble question="How intense is the pain or discomfort?" />
-            <UserBubble>
-              <div className="flex flex-row">
-                <Slider
-                  defaultValue={[2]}
-                  max={10}
-                  min={1}
-                  step={1}
-                  className="w-2xs mr-2.5"
-                />
-                <Button
-                  size="icon"
-                  className="size-7 rounded-full transition hover:scale-105"
-                >
-                  <FaArrowUp />
-                </Button>
-              </div>
-            </UserBubble>
-            <AiChatBubble question="Have you taken any medication to treat this?" />
-            <UserBubble>
-              <div className="flex flex-row">
-                <Button variant="outline" className="mr-2">
-                  Yes Already
-                </Button>
-                <Button variant="outline">Not Yet</Button>
-              </div>
-            </UserBubble>
-            <AiChatBubble question="Can you describe your current condition?" />
-            <UserBubble>
-              <div className="flex flex-row items-end">
-                <Textarea
-                  placeholder="Describe your current condition"
-                  className="bg-white w-100 h-30 mr-2.5"
-                />
-                <Button
-                  size="icon"
-                  className="size-7 rounded-full transition hover:scale-105"
-                >
-                  <FaArrowUp />
-                </Button>
-              </div>
-            </UserBubble>
-          </>
-        )}
-      </section>
+            </div>
+          </div>
+
+          <div className="pt-20 w-[30%] px-5 py-5 overflow-y-auto h-screen">
+            <SymptomChecker />
+          </div>
+        </div>
+      </div>
     </main>
   );
 }

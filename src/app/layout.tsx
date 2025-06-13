@@ -22,13 +22,48 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning className={`${inter.variable}`}>
-      <body className={`antialiased`}>
+      <body className="antialiased w-screen h-screen">
         <Navbar />
 
         <main className="main-layout-container">
-          <section className="w-2xl max-md:w-2xs">{children}</section>
+          {children}
+          {/* <section className="w-2xl max-md:w-2xs">{children}</section> */}
         </main>
       </body>
     </html>
   );
 }
+
+// app/layout.tsx atau komponen Layout.tsx
+
+// export default function RootLayout({ children }: { children: React.ReactNode }) {
+//   return (
+//     <html lang="en">
+//       <body className="h-screen overflow-hidden">
+//         {/* Navbar fixed di atas */}
+//         <div className="fixed top-0 left-0 w-full h-14 bg-white border-b z-50 px-4 flex items-center">
+//           <h1 className="font-semibold text-lg">My App</h1>
+//         </div>
+
+//         {/* Layout utama */}
+//         <div className="pt-14 h-full grid grid-cols-[250px_1fr]">
+//           {/* Sidebar kiri */}
+//           <aside className="h-full border-r bg-gray-50 px-4 py-6 overflow-y-auto">
+//             <ul className="space-y-2">
+//               <li>Menu 1</li>
+//               <li>Menu 2</li>
+//               <li>Menu 3</li>
+//             </ul>
+//           </aside>
+
+//           {/* Kontainer isi yang scrollable */}
+//           <main className="overflow-y-auto h-full px-6 py-6 bg-white">
+//             <div className="max-w-3xl mx-auto space-y-4">
+//               {children}
+//             </div>
+//           </main>
+//         </div>
+//       </body>
+//     </html>
+//   );
+// }
