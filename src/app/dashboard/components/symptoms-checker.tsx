@@ -29,7 +29,13 @@ const painLocations: string[] = [
   "Other",
 ];
 
-export default function SymptomChecker({ onClick, show }: { onClick: () => void, show: boolean }) {
+export default function SymptomChecker({
+  onClick,
+  show = true,
+}: {
+  onClick?: () => void;
+  show?: boolean;
+}) {
   return (
     <div className={cn("size-full flex flex-col justify-center px-5 py-5")}>
       <AiChatBubble question="Where is your pain or discomfort located?" />
