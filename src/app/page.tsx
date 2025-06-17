@@ -21,15 +21,14 @@ export default function Home() {
             </a>
           </div>
           <p className="text-pretty">
-            A modern AI-powered platform for health symptom analysis
+            interactive AI for second opinion your health symptoms
           </p>
           <CardDescription className="mb-5">
             <p className="text-pretty">
               Online tool that helps you input symptoms, get instant AI-based
-              suggestions, and make informed health decisions easily and
-              securely.
+              suggestions, and make informed health decisions easily.
             </p>
-          </CardDescription>
+          </CardDescription>y
           <Button asChild className="flex flex-row">
             <Link href="/personal-infromation">
               <FaGoogle /> Sign in with Google
