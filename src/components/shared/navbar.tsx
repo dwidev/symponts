@@ -1,8 +1,8 @@
 "use client";
 
+import React from "react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { usePathname } from "next/navigation";
-import React from "react";
 import { BsMoon } from "react-icons/bs";
 import {
   NavigationMenu,
@@ -13,10 +13,22 @@ import {
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
 import Link from "next/link";
+import { cn } from "@/lib/utils";
+
+type NavItem = {
+  name: string;
+  href: string;
+};
 
 export default function Navbar() {
   const path = usePathname();
   const includeNav = path.includes("/dashboard");
+
+  const navItems: NavItem[] = [
+    { name: "Symptom Checker", href: "/dashboard" },
+    { name: "Track Symptom", href: "/track" },
+    { name: "My Conditions", href: "/conditions" },
+  ];
 
   return (
     includeNav && (
@@ -25,32 +37,38 @@ export default function Navbar() {
           <div className="flex flex-row items-center">
             <h1 className="font-bold mr-3">SymptomAI</h1>
             <button
-              //   onClick={toggleTheme}
               className="p-2 mr-5 rounded-full border hover:bg-gray-200 dark:hover:bg-gray-700 transition cursor-pointer"
               aria-label="Toggle theme"
             >
-              {/* <BsSun className="text-yellow-400 w-5 h-5" /> */}
-              <BsMoon className="text-gray-800 w-5 h-5" />
+              <BsMoon />
             </button>
           </div>
           <div className="flex flex-row items-center">
             <NavigationMenu>
               <NavigationMenuList>
-                <NavigationMenuItem>
-                  <NavigationMenuLink asChild className="px-4 py-2">
-                    <Link href="/dashboard">Symptom Checker</Link>
-                  </NavigationMenuLink>
-                </NavigationMenuItem>
-                <NavigationMenuItem>
-                  <NavigationMenuLink asChild className="px-4 py-2">
-                    <Link href="/medical-history">Health Records</Link>
-                  </NavigationMenuLink>
-                </NavigationMenuItem>
-                <NavigationMenuItem>
-                  <NavigationMenuLink asChild>
-                    <Link href="/">My Conditions</Link>
-                  </NavigationMenuLink>
-                </NavigationMenuItem>
+                {navItems.map((nav, index) => {
+                  const isActive = path.includes(nav.href);
+                  return (
+                    <React.Fragment key={index}>
+                      <NavigationMenuItem>
+                        <NavigationMenuLink
+                          asChild
+                          className={cn(
+                            "mx-1 px-4 py-2",
+                            isActive && "bg-muted"
+                          )}
+                        >
+                          <Link
+                            href={nav.href}
+                            className={cn(isActive && "font-semibold")}
+                          >
+                            {nav.name}
+                          </Link>
+                        </NavigationMenuLink>
+                      </NavigationMenuItem>
+                    </React.Fragment>
+                  );
+                })}
               </NavigationMenuList>
             </NavigationMenu>
 
