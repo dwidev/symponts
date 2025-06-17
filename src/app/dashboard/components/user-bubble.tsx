@@ -3,18 +3,19 @@ import React from "react";
 
 type UserBubbleProps = {
   children: React.ReactNode;
+  answer?: string;
 };
 
-export function UserBubble(props: UserBubbleProps) {
-  const { children } = props;
-
+export function UserBubble({ children, answer }: UserBubbleProps) {
   return (
     <section className="w-4/5 flex flex-row items-end ml-auto my-2">
       <div className="flex flex-col items-end flex-1 mr-3">
-        <div className="bg-gray-100 rounded-2xl p-3 flex flex-wrap gap-1.5 ">
+        <div className="bg-gray-100 rounded-2xl p-3 flex flex-wrap gap-1.5 mb-2">
           {children}
         </div>
-        <p className="mt-2 italic text-sm text-gray-400">Please select one</p>
+        {answer !== undefined && (
+          <p className="italic text-sm text-gray-400">Please select one</p>
+        )}
       </div>
       <Avatar className="size-5 self-end">
         <AvatarImage

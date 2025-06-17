@@ -2,11 +2,13 @@ import React from "react";
 import AiChatBubble from "./aichat-bubble";
 import { UserBubble } from "./user-bubble";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import { FaArrowUp } from "react-icons/fa";
 import { Textarea } from "@/components/ui/textarea";
 import { Slider } from "@/components/ui/slider";
 import { cn } from "@/lib/utils";
+import { Question } from "@/types/questions";
+import { DatePicker } from "@/components/ui/date-picker";
+import ButtonAnswerChoice from "@/components/questions/button-answer-choice";
 
 const painLocations: string[] = [
   "Head",
@@ -29,48 +31,46 @@ const painLocations: string[] = [
   "Other",
 ];
 
-export default function SymptomChecker({
-  onClick,
-  show = true,
-}: {
-  onClick?: () => void;
-  show?: boolean;
-}) {
+export default function SymptomChecker({ onClick }: { onClick?: () => void }) {
+  const question: Question[] = [
+    {
+      id: "1",
+      title: "Where is your pain or discomfort located?",
+      type: "button-choice",
+    },
+  ];
+
   return (
     <div className={cn("size-full flex flex-col justify-center px-5 py-5")}>
-      <AiChatBubble question="Where is your pain or discomfort located?" />
-      <UserBubble>
-        {painLocations.map((e) => {
-          if (e == "Other") {
-            return (
-              <Input
-                key={e}
-                placeholder="type other.."
-                className="w-32 bg-white"
+      {question.map((q, i) => {
+        return (
+          <React.Fragment key={i}>
+            <AiChatBubble question={q.title} />
+            <UserBubble>
+              <ButtonAnswerChoice
+                choices={painLocations}
+                value={q.answer}
+                onClick={(value: unknown) => {
+                  console.log(value);
+                  onClick?.();
+                }}
+                onChangeOther={(e) => {
+                  console.log(e.target.value);
+                }}
               />
-            );
-          }
-          return (
-            <Button
-              onClick={onClick}
-              variant="outline"
-              className="transition hover:scale-105"
-              key={e}
-            >
-              {e}
-            </Button>
-          );
-        })}
-      </UserBubble>
-      {show && (
+            </UserBubble>
+          </React.Fragment>
+        );
+      })}
+      {true && (
         <>
           <AiChatBubble question="When did these symptoms start?" />
           <UserBubble>
             <div className="flex flex-row items-center">
-              <Input placeholder="When..." className="bg-white mr-2.5" />
+              <DatePicker />
               <Button
                 size="icon"
-                className="size-7 rounded-full transition hover:scale-105"
+                className="ml-2 size-7 rounded-full transition hover:scale-105"
               >
                 <FaArrowUp />
               </Button>
@@ -84,7 +84,7 @@ export default function SymptomChecker({
                 max={10}
                 min={1}
                 step={1}
-                className="w-[80%] mr-2.5"
+                className="w-[80px] mr-2.5"
               />
               <Button
                 size="icon"
