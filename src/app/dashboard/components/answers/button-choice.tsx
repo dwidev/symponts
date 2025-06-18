@@ -1,13 +1,13 @@
 import React from "react";
-import { Input } from "../ui/input";
-import { Button } from "../ui/button";
+import { Input } from "../../../../components/ui/input";
+import { Button } from "../../../../components/ui/button";
+import { Answer, Choice } from "@/types/answers";
 
 type ButtonAnswerChoiceProps<T> = {
-  choices: T[];
-  value?: T;
   onClick: (value: T) => void;
   onChangeOther: (e: React.ChangeEvent<HTMLInputElement>) => void;
-};
+} & Choice<T> &
+  Answer<T>;
 
 export default function ButtonAnswerChoice<T>({
   choices,

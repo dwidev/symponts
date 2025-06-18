@@ -1,11 +1,11 @@
 import React from "react";
 import { RiMentalHealthLine } from "react-icons/ri";
 
-type AiChatBubbleProps = {
+type BotChatProps = {
   question: string;
 };
 
-export default function AiChatBubble(props: AiChatBubbleProps) {
+export default function BotChat(props: BotChatProps) {
   const { question } = props;
   return (
     <section className="flex flex-row mb-5">
