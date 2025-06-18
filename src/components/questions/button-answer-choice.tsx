@@ -25,7 +25,6 @@ export default function ButtonAnswerChoice<T>({
                 key={index}
                 placeholder="type other.."
                 className="w-32 bg-white"
-                value={value != undefined ? String(value) : ""}
                 onChange={onChangeOther}
               />
             );

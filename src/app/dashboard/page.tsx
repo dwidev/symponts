@@ -36,7 +36,7 @@ export default function DashboardPage() {
           <ScrollArea className="h-full">
             <div className="min-h-screen flex justify-center items-center">
               <div className="pt-15 h-full max-w-[calc(100vw*0.4)]">
-                <SymptomChecker onClick={() => setShow(!show)} show={show} />
+                <SymptomChecker onClick={() => setShow(!show)} />
               </div>
             </div>
           </ScrollArea>
