@@ -3,15 +3,32 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Slider } from "@/components/ui/slider";
+import { Textarea } from "@/components/ui/textarea";
 import { cn } from "@/lib/utils";
+import { ScrollArea } from "@radix-ui/react-scroll-area";
 import { useRouter } from "next/navigation";
 import React from "react";
+import { FaArrowUp } from "react-icons/fa";
 
 export default function MedicalHistoryPage() {
   const { push } = useRouter();
 
   return (
-    <>
+    <div className="w-[50%] bg-red-300">
+      <ScrollArea className="max-h-[50%]">
+        <div className="flex flex-row">
+          <Textarea
+            placeholder="Describe your current condition"
+            className="bg-white min-h-30 max-w-[100%] resize-none"
+          />
+          <Button
+            size="icon"
+            className="size-7 rounded-full transition hover:scale-105"
+          >
+            <FaArrowUp />
+          </Button>
+        </div>
+      </ScrollArea>
       <h1 className="mt-5 text-2xl mb-10">Medical History</h1>
       <label htmlFor="chronic">
         You have any chronic illnesses?
@@ -100,6 +117,6 @@ export default function MedicalHistoryPage() {
       <Button className="mt-10" onClick={() => push("/dashboard")}>
         Save
       </Button>
-    </>
+    </div>
   );
 }

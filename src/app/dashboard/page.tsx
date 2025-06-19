@@ -22,7 +22,7 @@ export default function DashboardPage() {
                   <Markdown>{markdownContent}</Markdown>
                 </div>
               </div>
-            </ScrollArea>
+            </ScrollArea> 
           )}
         </AnimatePresence>
 
@@ -35,8 +35,8 @@ export default function DashboardPage() {
         >
           <ScrollArea className="h-full">
             <div className="min-h-screen flex justify-center items-center">
-              <div className="pt-15 h-full max-w-[calc(100vw*0.4)]">
-                <SymptomChecker onClick={() => setShow(!show)} />
+              <div className="pt-15 h-full max-w-[calc(100vw*0.5)]">
+                <SymptomChecker finish={() => setShow(!show)} />
               </div>
             </div>
           </ScrollArea>
