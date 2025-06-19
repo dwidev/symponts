@@ -17,7 +17,7 @@ export default function DatePickerAnswer({
       <DatePicker value={value} />
       <Button
         size="icon"
-        className="ml-2 size-7 rounded-full transition hover:scale-105"
+        className="size-7 rounded-full transition hover:scale-105"
         aria-label="sendButton"
         onClick={onSendAnswer}
       >

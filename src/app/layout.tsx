@@ -25,10 +25,12 @@ export default function RootLayout({
       <body className="antialiased w-screen h-screen">
         <Navbar />
 
-        {<main className="main-layout-container">
-          {children}
-          {/* <section className="w-2xl max-md:w-2xs">{children}</section> */}
-        </main>}
+        {
+          <main className="main-layout-container">
+            {children}
+            {/* <section className="w-2xl max-md:w-2xs">{children}</section> */}
+          </main>
+        }
       </body>
     </html>
   );

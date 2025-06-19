@@ -1,5 +1,3 @@
-"use client";
-
 import * as React from "react";
 import { format } from "date-fns";
 import { Calendar as CalendarIcon } from "lucide-react";
@@ -34,7 +32,7 @@ export function DatePicker({ value }: { value: Date | undefined }) {
         <Button
           variant="outline"
           data-empty={!date}
-          className="data-[empty=true]:text-muted-foreground w-fit justify-start text-left font-normal"
+          className="mr-2 data-[empty=true]:text-muted-foreground w-fit justify-start text-left font-normal"
         >
           <CalendarIcon />
           {date ? format(date, "PPP") : <span>Pick a date</span>}
