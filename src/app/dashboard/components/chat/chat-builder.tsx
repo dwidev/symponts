@@ -87,10 +87,10 @@ function ClientChatBuilder({
         </div>
       )}
       {q.actionType == "free-text" && (
-        <div className="max-w-md w-sm flex flex-row items-end">
+        <div className="w-full flex flex-row items-end">
           <Textarea
             placeholder="Describe your current condition"
-            className="bg-transparent max-h-30 max-w-full resize-none border-none shadow-none focus-visible:ring-0 mr-2"
+            className="bg-transparent max-h-30 w-full resize-none border-none shadow-none focus-visible:ring-0 mr-2"
           />
           <Button
             size="icon"
