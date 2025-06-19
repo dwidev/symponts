@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { Input } from "../../../../components/ui/input";
 import { Button } from "../../../../components/ui/button";
 import { AnimatePresence, motion } from "motion/react";
@@ -17,9 +17,9 @@ export default function ButtonAnswerChoice({
   onChangeOther,
 }: ButtonAnswerChoiceProps) {
   return (
-    <AnimatePresence>
-      <motion.div layout className="flex flex-wrap gap-1.5">
-        {value == "" ? (
+    <Fragment>
+      <div className="flex flex-wrap gap-1.5">
+        {value == "" &&
           choices.map((e, index) => {
             if (e == "Other") {
               return (
@@ -42,17 +42,29 @@ export default function ButtonAnswerChoice({
                 {String(e)}
               </Button>
             );
-          })
-        ) : (
-          <Button
-            variant="outline"
-            className="transition hover:scale-105"
-            disabled={true}
-          >
-            {String(value)}
-          </Button>
-        )}
-      </motion.div>
-    </AnimatePresence>
+          })}
+      </div>
+      <AnimatePresence>
+        <motion.div
+          initial={{ opacity: 0, y: 0 }}
+          animate={{
+            opacity: value != "" ? 1 : 0,
+            y: value != "" ? [0, -30, 0] : 0,
+          }}
+          transition={{ duration: 0.5, ease: "easeInOut" }}
+          className="flex flex-wrap gap-1.5"
+        >
+          {value != "" && (
+            <Button
+              variant="outline"
+              className="transition hover:scale-105"
+              disabled={true}
+            >
+              {String(value)}
+            </Button>
+          )}
+        </motion.div>
+      </AnimatePresence>
+    </Fragment>
   );
 }
