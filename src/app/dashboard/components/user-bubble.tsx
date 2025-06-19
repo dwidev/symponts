@@ -8,11 +8,9 @@ type UserBubbleProps = {
 
 export function UserBubble({ children, answer }: UserBubbleProps) {
   return (
-    <section className="w-4/5 flex flex-row items-end ml-auto my-2">
-      <div className="flex flex-col items-end flex-1 mr-3">
-        <div className="bg-gray-100 rounded-2xl p-3 flex flex-wrap gap-1.5 mb-2">
-          {children}
-        </div>
+    <section className="bg-red-300 w-full flex flex-row items-end">
+      <div className="flex flex-col items-end flex-1">
+        <div className="bg-gray-100 w-[80%] rounded-2xl p-3 mb-2">{children}</div>
         {answer !== undefined && (
           <p className="italic text-sm text-gray-400">Please select one</p>
         )}

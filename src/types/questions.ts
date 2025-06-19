@@ -1,11 +1,9 @@
-import { ButtonChoice, DatePicker } from "./answers";
-
-type QuestionType = ButtonChoice | DatePicker;
+import { AnswerType, ButtonChoice, DatePicker } from "./answers";
 
 type BaseQuestion = {
   id: string;
   title: string;
-  type: QuestionType;
+  type: AnswerType;
   answer?: string;
 };
 
@@ -18,4 +16,7 @@ type DateQuestion = BaseQuestion & {
   type: DatePicker;
 };
 
-export type Question<T = string> = ChoiceQuestion<T> | DateQuestion;
+export type Question<T = string> =
+  | BaseQuestion
+  | ChoiceQuestion<T>
+  | DateQuestion;

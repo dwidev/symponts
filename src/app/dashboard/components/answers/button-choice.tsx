@@ -1,22 +1,22 @@
 import React from "react";
 import { Input } from "../../../../components/ui/input";
 import { Button } from "../../../../components/ui/button";
-import { Answer, Choice } from "@/types/answers";
 
-type ButtonAnswerChoiceProps<T> = {
-  onClick: (value: T) => void;
+type ButtonAnswerChoiceProps = {
+  onClick: (value: string) => void;
   onChangeOther: (e: React.ChangeEvent<HTMLInputElement>) => void;
-} & Choice<T> &
-  Answer<T>;
+  choices: string[];
+  value?: string;
+};
 
-export default function ButtonAnswerChoice<T>({
+export default function ButtonAnswerChoice({
   choices,
   value,
   onClick,
   onChangeOther,
-}: ButtonAnswerChoiceProps<T>) {
+}: ButtonAnswerChoiceProps) {
   return (
-    <>
+    <div className="flex flex-wrap gap-1.5">
       {value == undefined ? (
         choices.map((e, index) => {
           if (e == "Other") {
@@ -50,6 +50,6 @@ export default function ButtonAnswerChoice<T>({
           {String(value)}
         </Button>
       )}
-    </>
+    </div>
   );
 }

@@ -1,10 +1,6 @@
 export type ButtonChoice = "button-choice";
 export type DatePicker = "date-picker";
+export type Slider = "slider";
+export type FreeText = "free-text";
 
-export type Choice<T> = {
-  choices: T[];
-};
-
-export type Answer<T> = {
-  value?: T;
-};
+export type AnswerType = ButtonChoice | DatePicker | Slider | FreeText;
