@@ -6,10 +6,19 @@ import { motion, AnimatePresence } from "motion/react";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import Markdown from "react-markdown";
 
-const markdownContent =
-  "## 🧠 Analisis Gejala\n\n**Keluhan:** Sakit kepala selama 2 hari\n\n### 🔍 Kemungkinan Penyebab\n- Ketegangan otot (_tension headache_)\n- Dehidrasi\n- Stres atau kelelahan\n- Kurang tidur\n- Infeksi ringan seperti flu atau sinusitis\n\n> **Catatan:** Jika sakit kepala disertai gejala lain seperti **mual**, **muntah**, **gangguan penglihatan**, atau **leher kaku**, maka bisa jadi itu tanda kondisi yang lebih serius seperti **migrain** atau bahkan **infeksi otak (meningitis)**.\n\n---\n\n### 🩺 Rekomendasi\n- ✅ Istirahat yang cukup dan hindari stres\n- 💧 Minum air putih minimal 2 liter per hari\n- 🕶️ Hindari layar dan cahaya terang jika sakit bertambah parah\n- 🧊 Gunakan kompres dingin atau hangat di bagian kepala\n- 💊 Minum obat pereda nyeri seperti parasetamol jika perlu\n- 📆 Jika gejala tidak membaik setelah 3 hari, atau terasa semakin berat,\n  **segera konsultasi ke dokter** untuk evaluasi lebih lanjut.\n\n---\n\n_⚠️ Disclaimer: Informasi ini bukan pengganti diagnosis medis langsung._\n_Selalu konsultasikan dengan tenaga kesehatan profesional._";
+export const result = {
+  nextAction: false,
+  question: [],
+  summary: {
+    content:
+      "### 🩺 Ringkasan Gejala:\nAnda mengalami sakit kepala di bagian belakang kepala selama 3 hari terakhir dengan tingkat keparahan 5 dari 10. Anda tidak mengalami gejala lain seperti mual, muntah, atau gangguan penglihatan. Anda juga tidak memiliki riwayat penyakit tertentu atau sedang mengonsumsi obat-obatan tertentu.\n\n### 🔍 Analisis Kemungkinan Penyebab:\nSakit kepala di bagian belakang kepala bisa disebabkan oleh berbagai faktor, mulai dari yang ringan hingga yang lebih serius. Berikut beberapa kemungkinan penyebabnya:\n\n*   **Sakit kepala tegang (tension headache):** Ini adalah jenis sakit kepala yang paling umum. Biasanya disebabkan oleh stres, kurang tidur, atau postur tubuh yang buruk. Sakit kepala tegang sering digambarkan sebagai rasa sakit seperti diikat di sekitar kepala.\n\n*   **Sakit kepala cervicogenic:** Jenis sakit kepala ini berasal dari masalah pada leher. Misalnya, osteoarthritis atau cedera whiplash. Rasa sakit biasanya terasa di bagian belakang kepala dan bisa menjalar ke dahi atau pelipis.\n\n*   **Neuralgia oksipital:** Kondisi ini melibatkan saraf oksipital yang berjalan dari bagian atas sumsum tulang belakang ke kulit kepala. Iritasi atau peradangan pada saraf ini dapat menyebabkan sakit kepala yang tajam dan menusuk di bagian belakang kepala.\n\n*   **Tekanan darah tinggi (hipertensi):** Meskipun jarang, tekanan darah tinggi yang sangat tinggi dapat menyebabkan sakit kepala. Jika Anda memiliki riwayat tekanan darah tinggi, penting untuk memantau tekanan darah Anda secara teratur.\n\n*   **Penyebab serius lainnya:** Dalam kasus yang jarang terjadi, sakit kepala di bagian belakang kepala bisa menjadi tanda kondisi yang lebih serius seperti tumor otak, aneurisma, atau meningitis. Jika Anda mengalami sakit kepala yang sangat parah, tiba-tiba, atau disertai dengan gejala lain seperti demam, leher kaku, atau kelemahan, segera cari pertolongan medis.\n\n### 💡 Penanganan & Tips Awal:\nBerikut beberapa tips yang dapat Anda coba untuk meredakan sakit kepala di rumah:\n\n*   **Istirahat yang cukup:** Pastikan Anda mendapatkan tidur yang cukup setiap malam. Kurang tidur dapat memicu sakit kepala.\n*   **Kelola stres:** Cari cara untuk mengelola stres, seperti yoga, meditasi, atau menghabiskan waktu di alam.\n*   **Kompres dingin atau hangat:** Coba kompres dingin atau hangat di bagian belakang kepala Anda. Beberapa orang merasa lega dengan kompres dingin, sementara yang lain lebih suka kompres hangat.\n*   **Pijat:** Pijat lembut di leher dan bahu Anda dapat membantu meredakan ketegangan otot yang dapat menyebabkan sakit kepala.\n*   **Obat pereda nyeri:** Anda dapat mengonsumsi obat pereda nyeri yang dijual bebas seperti parasetamol atau ibuprofen sesuai dengan dosis yang dianjurkan.\n\n**Kapan harus ke dokter?**\nSegera cari pertolongan medis jika Anda mengalami:\n\n*   Sakit kepala yang sangat parah atau tiba-tiba\n*   Sakit kepala yang disertai dengan demam, leher kaku, kebingungan, kejang, atau gangguan penglihatan\n*   Sakit kepala yang semakin memburuk dari waktu ke waktu\n*   Sakit kepala yang tidak membaik dengan obat pereda nyeri yang dijual bebas",
+    handling: null,
+    source: [],
+  },
+};
 export default function DashboardPage() {
   const [show, setShow] = useState(false);
+  const [result, setRes] = useState("");
 
   return (
     <main className="relative font-mono">
@@ -19,10 +28,12 @@ export default function DashboardPage() {
             <ScrollArea className="flex-1 bg-slate-50">
               <div className="mb-30 mt-25 flex flex-col items-center">
                 <div className="w-[85%] bg-white p-10">
-                  <Markdown>{markdownContent}</Markdown>
+                  <article className="prose max-w-none dark:prose-invert prose-h3:text-2xl">
+                    <Markdown>{result}</Markdown>
+                  </article>
                 </div>
               </div>
-            </ScrollArea> 
+            </ScrollArea>
           )}
         </AnimatePresence>
 
@@ -36,7 +47,12 @@ export default function DashboardPage() {
           <ScrollArea className="h-full">
             <div className="min-h-screen flex justify-center items-center">
               <div className="pt-15 h-full max-w-[calc(100vw*0.5)]">
-                <SymptomChecker finish={() => setShow(!show)} />
+                <SymptomChecker
+                  finish={(v) => {
+                    setShow(!show);
+                    setRes(v);
+                  }}
+                />
               </div>
             </div>
           </ScrollArea>

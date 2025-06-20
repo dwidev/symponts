@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useState } from "react";
 import BotChat from "../botchat";
 import { UserChat } from "../userchat";
 import { Slider } from "@/components/ui/slider";
@@ -15,7 +15,7 @@ export default function ChatBuilder({
   onSendAnswer,
 }: {
   question: ChatMessage[];
-  onSendAnswer: (answer: ChatMessage) => void;
+  onSendAnswer: (answer: string) => void;
 }) {
   return (
     <>
@@ -44,19 +44,17 @@ function ClientChatBuilder({
   onSendAnswer,
 }: {
   question: ChatMessage;
-  onSendAnswer: (answer: ChatMessage) => void;
+  onSendAnswer: (answer: string) => void;
 }) {
-  console.log(q.actionType);
-  console.log(q.options);
-
+  const [valueText, setValue] = useState("");
   return (
     <UserChat>
-      {q.actionType == "button-choice" && (
+      {q.actionType == "single-choice" && (
         <ButtonAnswerChoice
           choices={q.options ?? []}
           value={q.content}
-          onClick={() => {
-            onSendAnswer(q);
+          onClick={(a) => {
+            onSendAnswer(a);
           }}
           onChangeOther={(e) => {
             console.log(e.target.value);
@@ -64,9 +62,11 @@ function ClientChatBuilder({
         />
       )}
       {q.actionType == "date-picker" && (
-        <DatePickerAnswer onSendAnswer={() => onSendAnswer(q)} />
+        <DatePickerAnswer
+          onSendAnswer={() => onSendAnswer("2 Hari yang lalu")}
+        />
       )}
-      {q.actionType == "slider" && (
+      {q.actionType == "range-picker" && (
         <div className="flex flex-row items-center">
           <Slider
             defaultValue={[2]}
@@ -74,13 +74,13 @@ function ClientChatBuilder({
             min={1}
             step={1}
             className="w-[250px] mr-2.5"
-            disabled={true}
+            disabled={false}
           />
           <Button
             size="icon"
             className="size-7 rounded-full transition hover:scale-105"
             aria-label="sendButton"
-            onClick={() => onSendAnswer(q)}
+            onClick={() => onSendAnswer("5")}
           >
             <FaArrowUp />
           </Button>
@@ -89,13 +89,16 @@ function ClientChatBuilder({
       {q.actionType == "free-text" && (
         <div className="w-full flex flex-row items-end">
           <Textarea
+            onChange={(e) => {
+              setValue(e.target.value);
+            }}
             placeholder="Describe your current condition"
             className="bg-transparent max-h-30 w-full resize-none border-none shadow-none focus-visible:ring-0 mr-2"
           />
           <Button
             size="icon"
             className="size-7 rounded-full transition hover:scale-105"
-            onClick={() => onSendAnswer(q)}
+            onClick={() => onSendAnswer(valueText)}
           >
             <FaArrowUp />
           </Button>
