@@ -1,6 +1,6 @@
 "use client";
 
-import SymptomChecker from "./components/symptoms-checker";
+import SymptomChecker from "./_components/symptoms-checker";
 import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { ScrollArea } from "@/components/ui/scroll-area";
