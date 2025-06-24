@@ -1,7 +1,8 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardDescription } from "@/components/ui/card";
+import { signIn } from "@/lib/auth";
 import Link from "next/link";
-import { FaGithubAlt, FaGoogle } from "react-icons/fa";
+import { FaGithub, FaGithubAlt, FaGoogle } from "react-icons/fa";
 
 export default function Home() {
   return (
@@ -28,14 +29,30 @@ export default function Home() {
               Online tool that helps you input symptoms, get instant AI-based
               suggestions, and make informed health decisions easily.
             </p>
-          </CardDescription>y
+          </CardDescription>
           <Button asChild className="flex flex-row">
             <Link href="/personal-infromation">
               <FaGoogle /> Sign in with Google
             </Link>
           </Button>
+          <SignIn />
         </Card>
       </section>
     </>
+  );
+}
+
+export function SignIn() {
+  return (
+    <form
+      action={async () => {
+        "use server";
+        await signIn("github");
+      }}
+    >
+      <Button type="submit" className="flex flex-row">
+        <FaGithub /> Signin with GitHub
+      </Button>
+    </form>
   );
 }
