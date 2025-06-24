@@ -3,10 +3,11 @@ import { Card, CardDescription } from "@/components/ui/card";
 import { signIn } from "@/lib/auth";
 import Link from "next/link";
 import { FaGithub, FaGithubAlt, FaGoogle } from "react-icons/fa";
+import LoginWrapper from "./wrapper";
 
 export default function Home() {
   return (
-    <>
+    <LoginWrapper>
       <section className="">
         <Card className="px-5 py-10 border-foreground/25 gap-2">
           <div className="flex flex-row justify-between">
@@ -38,7 +39,7 @@ export default function Home() {
           <SignIn />
         </Card>
       </section>
-    </>
+    </LoginWrapper>
   );
 }
 
