@@ -1,12 +1,12 @@
 import { env } from "process";
 import { PrismaClient } from "../../../generated/prisma";
 
-const getPrisma = () =>
-  new PrismaClient({ log: ["warn", "error", "info", "query"] });
-
-declare const globalForPrisma: {
+const getPrisma = () => {
+  return new PrismaClient({ log: ["warn", "error"] });
+};
+const globalForPrisma = globalThis as unknown as {
   db: ReturnType<typeof getPrisma>;
-} & typeof global;
+};
 
 export const db = globalForPrisma.db ?? getPrisma();
 

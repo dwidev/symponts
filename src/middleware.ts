@@ -1,6 +1,7 @@
-import { auth as middleware } from "./lib/auth";
-import { NextAuthRequest } from "next-auth";
+import NextAuth, { NextAuthRequest } from "next-auth";
+import authConfig from "./lib/auth/auth.config";
 
+const { auth: middleware } = NextAuth(authConfig);
 export default middleware((req: NextAuthRequest) => {
   if (!req.auth) {
     const callbackUrl = req.nextUrl.href;

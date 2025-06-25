@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardDescription } from "@/components/ui/card";
-import { signIn } from "@/lib/auth";
+import { signIn } from "@/lib/auth/auth";
 import Link from "next/link";
 import { FaGithub, FaGithubAlt, FaGoogle } from "react-icons/fa";
 import LoginWrapper from "./wrapper";
@@ -43,7 +43,7 @@ export default function Home() {
   );
 }
 
-export function SignIn() {
+function SignIn(): React.JSX.Element {
   return (
     <form
       action={async () => {
