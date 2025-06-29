@@ -4,16 +4,12 @@ import { signIn } from "@/lib/auth/auth";
 import Link from "next/link";
 import { FaGithub, FaGithubAlt, FaGoogle } from "react-icons/fa";
 import LoginWrapper from "./wrapper";
-import { trpc } from "@/trpc/server";
 
 export default async function Home() {
-  const query = await trpc.greetings();
-
   return (
     <LoginWrapper>
       <section className="">
         <Card className="px-5 py-10 border-foreground/25 gap-2">
-          <p>{query}</p>
           <div className="flex flex-row justify-between">
             <p className="text-3xl font-bold">Symptoms AI</p>
             <a

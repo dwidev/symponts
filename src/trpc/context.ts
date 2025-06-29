@@ -1,25 +1,27 @@
+import { auth } from "@/lib/auth/auth";
 import { db } from "@/lib/db";
 import { Session, User } from "next-auth";
 
-async function createInnerContext() {
+type ContextInnerOptions = {
+  session: Session | null;
+  user: User | undefined;
+};
+
+function createInnerContext(_opt: ContextInnerOptions) {
   return {
     database: db,
+    session: _opt.session,
+    user: _opt.user,
   };
 }
 
 async function createContext() {
-  let user: User | undefined;
-  let session: Session | undefined;
+  const authResponse = await auth();
 
-  // TODO create process for get user and session data
-
-  const innerCtx = await createInnerContext();
-
-  return {
-    ...innerCtx,
-    user,
-    session,
-  };
+  return createInnerContext({
+    user: authResponse?.user,
+    session: authResponse,
+  });
 }
 
 type Context = Awaited<ReturnType<typeof createContext>>;
