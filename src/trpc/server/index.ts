@@ -1,16 +1,6 @@
-import { createTRPCReact } from "@trpc/react-query";
-import { AppRouter } from "../router/app.router";
-import { QueryClient } from "@tanstack/react-query";
-import { makeQueryClient } from "../client/query.client";
+import { createCallerFactory } from "..";
+import { createContext } from "../context";
+import { appRouter } from "../router/app.router";
 
-export const trpc = createTRPCReact<AppRouter>();
+export const trpc = createCallerFactory(appRouter)(createContext);
 
-let singletonQueryClient: QueryClient | undefined = undefined;
-
-export function getQueryClient() {
-  if (typeof window === "undefined") {
-    return makeQueryClient();
-  }
-
-  return (singletonQueryClient ??= makeQueryClient());
-}
