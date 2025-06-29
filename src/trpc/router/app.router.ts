@@ -1,8 +1,8 @@
 import { publicProducer, router } from "..";
 
 export const appRouter = router({
-  greetings: publicProducer.query(async () => {
-    await new Promise((r) => setTimeout(r, 2000));
+  greetings: publicProducer.query(async ({ ctx }) => {
+    console.log(ctx.session);
     return "Hello from trpc sympontsAI";
   }),
 });

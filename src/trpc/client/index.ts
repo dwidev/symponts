@@ -16,12 +16,19 @@ export function getQueryClient() {
   return (singletonQueryClient ??= makeQueryClient());
 }
 
+function getUrl() {
+  const baseUrl = (() => {
+    if (typeof window !== "undefined") return "";
+    if (process.env.VERCEL_URL) return `https://${process.env.VERCEL_URL}`;
+    return process.env.NEXT_PUBLIC_URL;
+  })();
+  return `${baseUrl}/api/trpc`;
+}
+
 export function makeTRPCClient() {
+  const url = getUrl();
+
   return trpc.createClient({
-    links: [
-      httpLink({
-        url: "http://localhost:2022",
-      }),
-    ],
+    links: [httpLink({ url })],
   });
 }

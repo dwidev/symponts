@@ -26,7 +26,6 @@ export default function RootLayout({
       <body className="antialiased w-screen h-screen">
         <TanstackProvider>
           <Navbar />
-
           {<main className="main-layout-container">{children}</main>}
         </TanstackProvider>
       </body>
