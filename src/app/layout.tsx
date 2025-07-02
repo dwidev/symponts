@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/shared/navbar";
-import TanstackProvider from "@/components/providers/tanstack.provider";
+import AppProvider from "@/components/providers";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -24,10 +24,10 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning className={`${inter.variable}`}>
       <body className="antialiased w-screen h-screen">
-        <TanstackProvider>
+        <AppProvider>
           <Navbar />
-          {<main className="main-layout-container">{children}</main>}
-        </TanstackProvider>
+          <main className="main-layout-container">{children}</main>
+        </AppProvider>
       </body>
     </html>
   );

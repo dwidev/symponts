@@ -97,7 +97,7 @@ export default function Navbar() {
                       </li>
                       <li>
                         <NavigationMenuLink asChild>
-                          <Link href="/">Logout</Link>
+                          <Link href="/signout">Logout</Link>
                         </NavigationMenuLink>
                       </li>
                     </ul>
