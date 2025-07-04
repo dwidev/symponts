@@ -3,6 +3,8 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/shared/navbar";
 import AppProvider from "@/components/providers";
+import UserAvatar, { AvatarSkeleton } from "@/components/shared/user-avatar";
+import { Suspense } from "react";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -25,7 +27,11 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning className={`${inter.variable}`}>
       <body className="antialiased w-screen h-screen">
         <AppProvider>
-          <Navbar />
+          <Navbar>
+            <Suspense fallback={<AvatarSkeleton />}>
+              <UserAvatar />
+            </Suspense>
+          </Navbar>
           <main className="main-layout-container">{children}</main>
         </AppProvider>
       </body>

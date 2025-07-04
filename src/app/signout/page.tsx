@@ -12,7 +12,7 @@ export default function SignOut() {
     if (!session) {
       redirect("/");
     } else {
-      signOut();
+      signOut({ redirectTo: "/" });
     }
   }, [session]);
 

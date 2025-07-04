@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { usePathname } from "next/navigation";
 import { BsMoon } from "react-icons/bs";
 import {
@@ -20,7 +19,7 @@ type NavItem = {
   href: string;
 };
 
-export default function Navbar() {
+export default function Navbar({ children }: { children: React.ReactNode }) {
   const path = usePathname();
   const includeNav = path.includes("/dashboard");
 
@@ -79,14 +78,7 @@ export default function Navbar() {
                     hiddenIcon={false}
                     className="bg-transparent p-0 hover:bg-transparent focus:outline-none mx-3"
                   >
-                    <Avatar className="size-10 cursor-pointer">
-                      <AvatarImage
-                        src="https://github.com/shadcn.png"
-                        className="object-center rounded-full"
-                        alt="user avatar"
-                      />
-                      <AvatarFallback>CN</AvatarFallback>
-                    </Avatar>
+                    {children}
                   </NavigationMenuTrigger>
                   <NavigationMenuContent>
                     <ul className="w-[200px] p-2">

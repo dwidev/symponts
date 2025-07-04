@@ -1,5 +1,5 @@
 import { createTRPCReact } from "@trpc/react-query";
-import { AppRouter } from "../router/app.router";
+import { AppRouter } from "../router";
 import { httpLink } from "@trpc/client";
 import type { QueryClient } from "@tanstack/react-query";
 import { makeQueryClient } from "./query.client";
