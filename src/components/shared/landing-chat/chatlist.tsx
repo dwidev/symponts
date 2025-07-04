@@ -1,20 +1,17 @@
-import BotChat from "@/app/dashboard/_components/botchat";
-import ButtonAnswerChoice from "@/app/dashboard/_components/chat/button-choice";
-import { UserChat } from "@/app/dashboard/_components/userchat";
-import { cn } from "@/lib/utils";
-import { ChatMessage } from "@/types/chat";
-import { motion } from "motion/react";
+"use client";
 
-export default function LandingChatList({
-  question,
-  onNext,
-}: {
-  question: ChatMessage[];
-  onNext: () => void;
-}) {
+import { cn } from "@/lib/utils";
+import { motion } from "motion/react";
+import LandingBotChat from "./landing-botchat";
+import { useLandingContext } from "./context";
+import LandingUserChat from "./landing-userchat";
+
+export default function LandingChatList() {
+  const { chat } = useLandingContext();
+
   return (
     <>
-      {question.map((q, i) => {
+      {chat.map((q, i) => {
         return (
           <section
             key={i}
@@ -25,6 +22,7 @@ export default function LandingChatList({
           >
             {q.sender == "bot" && (
               <motion.div
+                key={i}
                 initial={{ opacity: 0 }}
                 animate={{
                   opacity: 1,
@@ -36,21 +34,10 @@ export default function LandingChatList({
                   },
                 }}
               >
-                <BotChat question={q.content} onDoneTyping={onNext} />
+                <LandingBotChat question={q} />
               </motion.div>
             )}
-            {q.sender == "client" && (
-              <UserChat>
-                <ButtonAnswerChoice
-                  choices={q.options ?? []}
-                  value={q.content}
-                  onClick={() => {}}
-                  onChangeOther={(e) => {
-                    console.log(e.target.value);
-                  }}
-                />
-              </UserChat>
-            )}
+            {q.sender == "client" && <LandingUserChat key={i} question={q} />}
           </section>
         );
       })}
