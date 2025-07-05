@@ -1,14 +1,10 @@
 import ButtonAnswerChoice from "@/app/dashboard/_components/chat/button-choice";
 import { UserChat } from "@/app/dashboard/_components/userchat";
-import { ChatMessage } from "@/types/chat";
 import React, { useEffect, useState } from "react";
 import { useLandingContext } from "./context";
+import { Message } from "../../../../generated/prisma";
 
-export default function LandingUserChat({
-  question,
-}: {
-  question: ChatMessage;
-}) {
+export default function LandingUserChat({ question }: { question: Message }) {
   const { onNext } = useLandingContext();
   const [isComplete, setIsComplete] = useState(false);
 
@@ -26,10 +22,11 @@ export default function LandingUserChat({
   return (
     <UserChat>
       <ButtonAnswerChoice
-        choices={question.options ?? []}
-        value={question.content}
+        choices={[]}
+        value={question.messageText}
         onClick={() => {}}
         onChangeOther={() => {}}
+        disabled={true}
       />
     </UserChat>
   );

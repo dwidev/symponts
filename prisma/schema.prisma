@@ -51,6 +51,11 @@ model VerificationToken {
   @@map("verification_tokens")
 }
 
+enum CHAT_SENDER {
+  ASSISTANT
+  USER
+}
+
 model Chat {
   id          String    @id @default(cuid())
   userId      String    @map("user_id")
@@ -68,7 +73,7 @@ model Message {
   id           String    @id @default(cuid())
   chatId       String    @map("chat_id")
   uiElementId  String?   @unique @map("ui_element_id")
-  senderType   String    @db.VarChar(10)
+  senderType   CHAT_SENDER    @default(ASSISTANT) @map("sender_type")
   messageText  String    @map("message_text") @db.Text
   timestamp    DateTime  @default(now())
 

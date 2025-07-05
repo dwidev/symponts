@@ -1,40 +1,46 @@
-import { ChatMessage } from "@/types/chat";
+import { Message } from "../../../../generated/prisma";
 
-export const dummyChat: ChatMessage[] = [
+export const dummyChat: Message[] = [
   {
+    chatId: "1",
     id: "1",
-    sender: "bot",
-    content:
+    senderType: "ASSISTANT",
+    messageText:
       "Selamat pagi, saya AI asisten medis Anda. Apa yang bisa saya bantu hari ini? Mohon jelaskan keluhan utama Anda!",
-    type: "bot-question",
+    timestamp: new Date(),
+    uiElementId: "",
   },
   {
+    chatId: "1",
     id: "2",
-    sender: "client",
-    content: "Saya merasa pusing & mual.",
-    type: "action",
-    actionType: "single-choice",
-    options: ["Ya, demam"],
+    senderType: "USER",
+    messageText: "Saya merasa pusing & mual.",
+    timestamp: new Date(),
+    uiElementId: "",
   },
   {
+    chatId: "1",
     id: "3",
-    sender: "bot",
-    content: "Sejak kapan anda mengalami mual & pusing?",
-    type: "bot-question",
+    senderType: "ASSISTANT",
+    messageText: "Sejak kapan anda mengalami mual & pusing?",
+    timestamp: new Date(),
+    uiElementId: "",
   },
   {
+    chatId: "1",
     id: "4",
-    sender: "client",
-    content: "Tadi Pagi",
-    type: "action",
-    actionType: "single-choice",
-    options: ["Ya, demam"],
+    senderType: "USER",
+    messageText: "Tadi Pagi",
+    timestamp: new Date(),
+    uiElementId: "",
   },
   {
-    id: "3",
-    sender: "bot",
-    content:
+    chatId: "1",
+    id: "5",
+    senderType: "ASSISTANT",
+    messageText:
       "Pusing dan mual bisa disebabkan oleh banyak hal, mulai dari yang ringan seperti kelelahan atau masuk angin, hingga hal yang lebih serius.",
-    type: "bot-question",
+    timestamp: new Date(),
+    uiElementId: "",
   },
 ];

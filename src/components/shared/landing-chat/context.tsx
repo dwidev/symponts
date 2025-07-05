@@ -1,5 +1,4 @@
 "use client";
-import { ChatMessage } from "@/types/chat";
 import React, {
   createContext,
   useCallback,
@@ -9,6 +8,7 @@ import React, {
   useState,
 } from "react";
 import { dummyChat } from "./dummy";
+import { Message } from "../../../../generated/prisma";
 
 const LandingChatContext = createContext<
   ReturnType<typeof useLandingChats> | undefined
@@ -38,7 +38,7 @@ export const LandingChatProvider = ({
 };
 
 function useLandingChats() {
-  const [chat, setChat] = useState<ChatMessage[]>([]);
+  const [chat, setChat] = useState<Message[]>([]);
   const [step, setStep] = useState<number>(0);
   const ref = useRef(0);
 

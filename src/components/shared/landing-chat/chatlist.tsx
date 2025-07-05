@@ -17,10 +17,10 @@ export default function LandingChatList() {
             key={i}
             className={cn(
               "mb-4 flex flex-col justify-center",
-              q.sender == "bot" ? "items-start" : "items-end"
+              q.senderType == "ASSISTANT" ? "items-start" : "items-end"
             )}
           >
-            {q.sender == "bot" && (
+            {q.senderType == "ASSISTANT" && (
               <motion.div
                 key={i}
                 initial={{ opacity: 0 }}
@@ -37,7 +37,7 @@ export default function LandingChatList() {
                 <LandingBotChat question={q} />
               </motion.div>
             )}
-            {q.sender == "client" && <LandingUserChat key={i} question={q} />}
+            {q.senderType == "USER" && <LandingUserChat key={i} question={q} />}
           </section>
         );
       })}

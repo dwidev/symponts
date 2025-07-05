@@ -3,12 +3,16 @@ import { Avatar, AvatarImage, AvatarFallback } from "@radix-ui/react-avatar";
 import React from "react";
 
 export default async function UserAvatar() {
-  const data = await trpc.user.profile();
+  const data = await trpc.user.profile().catch(() => {
+    return null;
+  });
+
+  if (data == null) return null;
 
   return (
     <Avatar className="size-10 cursor-pointer">
       <AvatarImage
-        src={data.user?.image ?? ""}
+        src={data?.user?.image ?? ""}
         className="object-center rounded-full"
         alt="user avatar"
       />

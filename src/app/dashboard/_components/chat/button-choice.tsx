@@ -15,7 +15,8 @@ export default function ButtonAnswerChoice({
   value,
   onClick,
   onChangeOther,
-}: ButtonAnswerChoiceProps) {
+  ...props
+}: ButtonAnswerChoiceProps & React.ComponentProps<"button">) {
   return (
     <Fragment>
       <div className="flex flex-wrap gap-1.5">
@@ -38,6 +39,7 @@ export default function ButtonAnswerChoice({
                 variant="outline"
                 className="transition hover:scale-105"
                 key={index}
+                {...props}
               >
                 {String(e)}
               </Button>
@@ -59,6 +61,7 @@ export default function ButtonAnswerChoice({
               variant="outline"
               className="transition hover:scale-105"
               disabled={true}
+              {...props}
             >
               {String(value)}
             </Button>
