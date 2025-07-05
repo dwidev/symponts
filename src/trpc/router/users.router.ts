@@ -4,9 +4,8 @@ export const usersRouter = router({
   chats: protectedProcedure.query(async ({ ctx }) => {
     const { database } = ctx;
 
-    const chats = await database.chat.findMany({
+    const chats = await database.chat.findUnique({
       include: {
-        user: true,
         messages: {
           include: {
             uiElement: true,
@@ -14,7 +13,7 @@ export const usersRouter = router({
         },
       },
       where: {
-        userId: "cmcgznlkk0000guhkgdnyox7a",
+        id: "chat_room_id_001",
       },
     });
 
