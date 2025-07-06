@@ -9,7 +9,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
 
   callbacks: {
     async redirect({ url, baseUrl }) {
-      const dashboard = baseUrl + "/dashboard";
+      const dashboard = baseUrl + "/new";
       if (url.startsWith(baseUrl)) {
         const { searchParams } = new URL(url);
         const callbackUrl = searchParams.get("callbackUrl");
