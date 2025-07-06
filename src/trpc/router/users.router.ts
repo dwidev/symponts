@@ -1,22 +1,10 @@
+import getChatByID from "@/services/chats/get-chat-by-id";
 import { protectedProcedure, router } from "..";
 
 export const usersRouter = router({
   chats: protectedProcedure.query(async ({ ctx }) => {
     const { database } = ctx;
-
-    const chats = await database.chat.findUnique({
-      include: {
-        messages: {
-          include: {
-            uiElement: true,
-          },
-        },
-      },
-      where: {
-        id: "chat_room_id_001",
-      },
-    });
-
+    const chats = await getChatByID(database);
     return chats;
   }),
   profile: protectedProcedure.query(async ({ ctx }) => {

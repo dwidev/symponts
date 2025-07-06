@@ -1,14 +1,14 @@
-import { Chat, Prisma } from "../../generated/prisma";
+import { UiElement, ChatSelect, MessageSelect } from "@/lib/db/validator/chats";
+import { Prisma } from "../../generated/prisma/client";
 
-export type ChatConversation = Chat;
-export type ChatWithMessages = Prisma.ChatGetPayload<{
-  include: {
-    messages: {
-      include: {
-        uiElement: true;
-      };
-    };
-  };
+export type BotUIElement = Prisma.BotUIElementGetPayload<{
+  select: typeof UiElement;
 }>;
 
-export type MessageWithElement = ChatWithMessages["messages"][number];
+export type Chat = Prisma.ChatGetPayload<{
+  select: typeof ChatSelect;
+}>;
+
+export type Message = Prisma.MessageGetPayload<{
+  select: typeof MessageSelect;
+}>;

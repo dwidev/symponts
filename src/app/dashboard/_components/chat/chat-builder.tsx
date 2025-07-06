@@ -4,16 +4,16 @@ import React, { Fragment, useEffect, useState } from "react";
 import BotChat from "../botchat";
 import { cn } from "@/lib/utils";
 import { UserChat } from "../userchat";
-import { MessageWithElement } from "@/types/chats";
 import { trpc } from "@/trpc/client";
+import { Message } from "@/types/chats";
 
 const ChatBuilder = () => {
   const { data: chat, isLoading } = trpc.user.chats.useQuery();
-  const [messages, setMessages] = useState<MessageWithElement[]>([]);
+  const [messages, setMessages] = useState<Message[]>([]);
 
   useEffect(() => {
     if (!chat) return;
-    setMessages(chat.messages as unknown as MessageWithElement[]);
+    setMessages(chat.messages);
   }, [chat]);
 
   if (isLoading)
@@ -41,7 +41,7 @@ const ChatBuilder = () => {
             )}
             {q.senderType == "USER" && (
               <UserChat>
-                <p>Fahmi dwi s</p>
+                <p>{q.messageText}</p>
               </UserChat>
             )}
           </section>
