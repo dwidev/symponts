@@ -21,7 +21,7 @@ type NavItem = {
 
 export default function Navbar({ children }: { children: React.ReactNode }) {
   const path = usePathname();
-  const includeNav = path.includes("/dashboard");
+  const includeNav = path.includes("/chat") || path.includes("/new");
 
   const navItems: NavItem[] = [
     { name: "Symptom Checker", href: "/dashboard" },

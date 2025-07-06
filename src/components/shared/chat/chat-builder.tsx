@@ -1,11 +1,11 @@
 "use client";
 
 import React, { Fragment, useEffect, useState } from "react";
-import BotChat from "../botchat";
 import { cn } from "@/lib/utils";
-import { UserChat } from "../userchat";
+import { UserChat } from "../../../app/(dashboard)/chat/_components/userchat";
 import { trpc } from "@/trpc/client";
 import { Message } from "@/types/chats";
+import BotChat from "./botchat";
 
 const ChatBuilder = () => {
   const { data: chat, isLoading } = trpc.user.chats.useQuery();

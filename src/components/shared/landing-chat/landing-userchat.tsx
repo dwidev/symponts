@@ -1,8 +1,8 @@
-import ButtonAnswerChoice from "@/app/dashboard/_components/chat/button-choice";
-import { UserChat } from "@/app/dashboard/_components/userchat";
 import React, { useEffect, useState } from "react";
 import { useLandingContext } from "./context";
 import { Message } from "../../../../generated/prisma";
+import ButtonAnswerChoice from "../chat/button-choice";
+import { UserChat } from "@/app/(dashboard)/chat/_components/userchat";
 
 export default function LandingUserChat({ question }: { question: Message }) {
   const { onNext } = useLandingContext();

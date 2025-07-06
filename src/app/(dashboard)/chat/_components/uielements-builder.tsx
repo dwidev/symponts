@@ -2,11 +2,11 @@ import { Textarea } from "@/components/ui/textarea";
 import { Slider } from "@radix-ui/react-slider";
 import { useState } from "react";
 import { FaArrowUp } from "react-icons/fa";
-import { BotUIElement } from "../../../../../generated/prisma";
-import { UserChat } from "../userchat";
-import ButtonAnswerChoice from "./button-choice";
-import DatePickerAnswer from "./date-picker";
 import { Button } from "@/components/ui/button";
+import ButtonAnswerChoice from "@/components/shared/chat/button-choice";
+import DatePickerAnswer from "@/components/shared/chat/date-picker";
+import { BotUIElement } from "@/types/chats";
+import { UserChat } from "./userchat";
 
 export function UiElementsBuilder({
   element,

@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
-import { Input } from "../../../../components/ui/input";
-import { Button } from "../../../../components/ui/button";
 import { AnimatePresence, motion } from "motion/react";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
 
 type ButtonAnswerChoiceProps = {
   onClick: (value: string) => void;
