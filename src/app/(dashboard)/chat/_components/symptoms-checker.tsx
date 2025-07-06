@@ -1,6 +1,6 @@
 import React from "react";
 import { cn } from "@/lib/utils";
-import ChatBuilder from "../../../../components/shared/chat/chat-builder";
+import ChatBuilder from "./chat-builder";
 
 export default function SymptomChecker() {
   return (
