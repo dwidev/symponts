@@ -6,9 +6,13 @@ import { UserChat } from "./userchat";
 import { trpc } from "@/trpc/client";
 import { Message } from "@/types/chats";
 import BotChat from "@/components/shared/chat/botchat";
+import { useParams } from "next/navigation";
 
 const ChatBuilder = () => {
-  const { data: chat, isLoading } = trpc.user.chats.useQuery();
+  const { chatid } = useParams();
+  const { data: chat, isLoading } = trpc.chat.list.useQuery({
+    chatId: chatid as string,
+  });
   const [messages, setMessages] = useState<Message[]>([]);
 
   useEffect(() => {
