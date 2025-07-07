@@ -1,5 +1,6 @@
 import InputPrompt from "@/components/shared/input-promp";
 import { Button } from "@/components/ui/button";
+import { AlertCircle } from "lucide-react";
 import React from "react";
 
 export default function NewChatPage() {
@@ -24,8 +25,13 @@ export default function NewChatPage() {
               );
             })}
           </div>
-          <div className="bg-white px-5 py-2 rounded-2xl shadow-2xl">
-            <InputPrompt />
+          <InputPrompt />
+          <div className="flex self-center items-start w-[90%]">
+            <AlertCircle size="15" className="text-gray-500" />
+            <p className="text-[12px] text-gray-500 text-center">
+              Saran dari AI ini bukan diagnosis medis. Mohon tetap berkonsultasi
+              dengan dokter untuk penanganan yang tepat.
+            </p>
           </div>
         </div>
       </div>
