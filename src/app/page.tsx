@@ -4,6 +4,7 @@ import { FaGithub, FaGithubAlt } from "react-icons/fa";
 import LoginWrapper from "./wrapper";
 import LandingChat from "@/components/shared/landing-chat";
 import { ScrollArea } from "@radix-ui/react-scroll-area";
+import FadeBlur from "@/components/ui/fade-blur";
 
 export default async function Home() {
   return (
@@ -12,10 +13,12 @@ export default async function Home() {
         <div className="flex justify-center w-full gap-7 px-8 items-center max-w-7xl">
           <div className="px-5 py-10 flex-1">
             <div className="flex flex-col justify-center items-center gap-7">
-              <h1 className="text-6xl font-bold">Symptoms.AI</h1>
-              <p className="text-2xl text-pretty text-center mt-2">
-                interactive AI for second opinion your health symptoms
-              </p>
+              <FadeBlur>
+                <h1 className="text-6xl font-bold">Symptoms.AI</h1>
+                <p className="text-2xl text-pretty text-center mt-2">
+                  interactive AI for second opinion your health symptoms
+                </p>
+              </FadeBlur>
               <div className="flex flex-row gap-5">
                 <SignIn />
                 <a
