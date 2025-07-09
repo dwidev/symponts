@@ -31,7 +31,7 @@ export default function ChatLayout({
               )}
             >
               <div className="flex flex-col gap-5">
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-wrap gap-2 mb-1">
                   {[0, 1, 2, 3].map((e) => {
                     return (
                       <Button

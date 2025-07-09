@@ -19,10 +19,12 @@ import {
 } from "lucide-react";
 import { Separator } from "../ui/separator";
 import { trpc } from "@/trpc/client";
+import BoxGradient from "../ui/box-gradient";
 
 export default function InputPrompt() {
   const router = useRouter();
   const [message, setMessage] = useState("");
+  const [focus, setFocus] = useState(false);
   const { mutate: sendChat, isPending } = trpc.chat.create.useMutation({
     onSuccess: ({ id }) => {
       router.push(`/chat/${id}`);
@@ -30,13 +32,15 @@ export default function InputPrompt() {
   });
 
   return (
-    <div className="bg-white px-5 py-2 rounded-2xl shadow-2xl w-full">
-      <div className="w-full flex flex-col">
+    <BoxGradient isFocused={focus}>
+      <div className="px-5 py-2 rounded-2xl w-full">
         <Textarea
           value={message}
           onChange={(e) => setMessage(e.target.value)}
+          onFocus={() => setFocus(true)}
+          onBlur={() => setFocus(false)}
           placeholder="Describe your current condition"
-          className="bg-transparent max-h-50 resize-none border-none shadow-none focus-visible:ring-0 mr-2"
+          className="bg-transparent max-h-50 resize-none border-none shadow-none focus-visible:ring-0 mr-2 focus:border-2 focus:border-red-500"
         />
         <div className="flex flex-row items-center justify-between mb-2 mt-3">
           <div className="flex flex-row gap-3">
@@ -86,6 +90,6 @@ export default function InputPrompt() {
           </div>
         </div>
       </div>
-    </div>
+    </BoxGradient>
   );
 }
