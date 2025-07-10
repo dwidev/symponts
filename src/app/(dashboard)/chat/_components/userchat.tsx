@@ -16,7 +16,6 @@ export function UserChat({ children, answer }: UserBubbleProps) {
             <p className="italic text-sm text-gray-400">Please select one</p>
           )}
         </div>
-        <p className="italic text-xs text-gray-400">Please select one</p>
       </div>
       <Avatar className="size-5 self-end">
         <AvatarImage

@@ -22,36 +22,38 @@ const ChatBuilder = () => {
 
   if (isLoading)
     return (
-      <>
+      <div className="flex flex-col justify-center items-center mt-20">
         <p>Is loadingg.......</p>
-      </>
+      </div>
     );
 
   return (
-    <>
-      {messages.map((q, i) => {
-        return (
-          <section
-            key={i}
-            className={cn(
-              "mb-4 flex flex-col justify-center",
-              q.senderType == "ASSISTANT" ? "items-start" : "items-end"
-            )}
-          >
-            {q.senderType == "ASSISTANT" && (
-              <div className="flex flex-col">
-                <BotChat question={q.messageText} />
-              </div>
-            )}
-            {q.senderType == "USER" && (
-              <UserChat>
-                <p>{q.messageText}</p>
-              </UserChat>
-            )}
-          </section>
-        );
-      })}
-    </>
+    <div className="flex flex-col justify-center items-center">
+      <div className="lg:w-2xl">
+        {messages.map((q, i) => {
+          return (
+            <section
+              key={i}
+              className={cn(
+                "mb-4 flex flex-col justify-center",
+                q.senderType == "ASSISTANT" ? "items-start" : "items-end"
+              )}
+            >
+              {q.senderType == "ASSISTANT" && (
+                <div className="flex flex-col">
+                  <BotChat question={q.messageText} />
+                </div>
+              )}
+              {q.senderType == "USER" && (
+                <UserChat>
+                  <p>{q.messageText}</p>
+                </UserChat>
+              )}
+            </section>
+          );
+        })}
+      </div>
+    </div>
   );
 };
 

@@ -1,8 +1,6 @@
-"use client";
-
 import React, { useState } from "react";
-import { Textarea } from "../ui/textarea";
-import { Button } from "../ui/button";
+import { Textarea } from "../../ui/textarea";
+import { Button } from "../../ui/button";
 import { FaArrowUp } from "react-icons/fa";
 import { useRouter } from "next/navigation";
 import {
@@ -10,16 +8,16 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "../ui/dropdown-menu";
+} from "../../ui/dropdown-menu";
 import {
   Brain,
   LoaderIcon,
   LucideChevronDown,
   LucideSparkles,
 } from "lucide-react";
-import { Separator } from "../ui/separator";
+import { Separator } from "../../ui/separator";
 import { trpc } from "@/trpc/client";
-import BoxGradient from "../ui/box-gradient";
+import BoxGradient from "../../ui/box-gradient";
 
 export default function InputPrompt() {
   const router = useRouter();
