@@ -5,7 +5,7 @@ import React from "react";
 export default function ChatListSkeleton() {
   return (
     <>
-      {Array.from({ length: 2 }).map((_, i) => {
+      {Array.from({ length: 3 }).map((_, i) => {
         return (
           <section
             key={i}
@@ -14,7 +14,7 @@ export default function ChatListSkeleton() {
               i % 2 == 1 ? "items-start" : "items-end"
             )}
           >
-            <Skeleton key={i} className="w-[40%] h-[30px] rounded-[20px]" />
+            <Skeleton key={i} className="w-[40%] h-[50px] rounded-[10px]" />
           </section>
         );
       })}

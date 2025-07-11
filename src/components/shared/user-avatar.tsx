@@ -1,7 +1,7 @@
 import { trpc } from "@/trpc/server";
-import { Avatar, AvatarImage, AvatarFallback } from "@radix-ui/react-avatar";
 import React from "react";
 import { Skeleton } from "../ui/skeleton";
+import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 
 export default async function UserAvatar() {
   const data = await trpc.user.profile().catch(() => {
