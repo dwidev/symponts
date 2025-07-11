@@ -7,6 +7,7 @@ import { trpc } from "@/trpc/client";
 import { Message } from "@/types/chats";
 import BotChat from "@/components/shared/chat/botchat";
 import { useParams } from "next/navigation";
+import ChatListSkeleton from "./chat-list-skeleton";
 
 const ChatBuilder = () => {
   const { chatid } = useParams();
@@ -20,38 +21,33 @@ const ChatBuilder = () => {
     setMessages(chat.messages);
   }, [chat]);
 
-  if (isLoading)
-    return (
-      <div className="flex flex-col justify-center items-center mt-20">
-        <p>Is loadingg.......</p>
-      </div>
-    );
-
   return (
     <div className="flex flex-col justify-center items-center">
       <div className="sm:w-2xl sm:px-5">
-        {messages.map((q, i) => {
-          return (
-            <section
-              key={i}
-              className={cn(
-                "mb-4 flex flex-col justify-center",
-                q.senderType == "ASSISTANT" ? "items-start" : "items-end"
-              )}
-            >
-              {q.senderType == "ASSISTANT" && (
-                <div className="flex flex-col">
-                  <BotChat question={q.messageText} />
-                </div>
-              )}
-              {q.senderType == "USER" && (
-                <UserChat>
-                  <p>{q.messageText}</p>
-                </UserChat>
-              )}
-            </section>
-          );
-        })}
+        {isLoading && <ChatListSkeleton />}
+        {!isLoading &&
+          messages.map((q, i) => {
+            return (
+              <section
+                key={i}
+                className={cn(
+                  "mb-4 flex flex-col justify-center",
+                  q.senderType == "ASSISTANT" ? "items-start" : "items-end"
+                )}
+              >
+                {q.senderType == "ASSISTANT" && (
+                  <div className="flex flex-col">
+                    <BotChat question={q.messageText} />
+                  </div>
+                )}
+                {q.senderType == "USER" && (
+                  <UserChat>
+                    <p>{q.messageText}</p>
+                  </UserChat>
+                )}
+              </section>
+            );
+          })}
       </div>
     </div>
   );
