@@ -1,6 +1,7 @@
 import { trpc } from "@/trpc/server";
 import { Avatar, AvatarImage, AvatarFallback } from "@radix-ui/react-avatar";
 import React from "react";
+import { Skeleton } from "../ui/skeleton";
 
 export default async function UserAvatar() {
   const data = await trpc.user.profile().catch(() => {
@@ -22,5 +23,5 @@ export default async function UserAvatar() {
 }
 
 export function AvatarSkeleton() {
-  return <div className="w-10 h-10 rounded-full bg-gray-300 animate-pulse" />;
+  return <Skeleton className="w-10 h-10 rounded-full bg-gray-300" />;
 }
