@@ -12,7 +12,7 @@ export default function PropmtSection() {
 
   return (
     <motion.div layout transition={{ duration: 0.3, ease: "easeInOut" }}>
-      <div className="flex flex-col gap-5 bg-white">
+      <div className="flex flex-col gap-5 bg-white px-5">
         <AnimatePresence>
           {isNew && (
             <div className="flex flex-wrap gap-2 mb-1">

@@ -29,7 +29,7 @@ const ChatBuilder = () => {
 
   return (
     <div className="flex flex-col justify-center items-center">
-      <div className="lg:w-2xl">
+      <div className="sm:w-2xl sm:px-5">
         {messages.map((q, i) => {
           return (
             <section
