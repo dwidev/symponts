@@ -18,7 +18,8 @@ const ChatBuilder = () => {
 
   useEffect(() => {
     if (!chat) return;
-    setMessages(chat.messages);
+    const c = chat.messages.map((e) => ({ ...e, onStream: false }));
+    setMessages(c);
   }, [chat]);
 
   return (
@@ -48,6 +49,21 @@ const ChatBuilder = () => {
               </section>
             );
           })}
+        <div className="flex flex-col h-[200px]">
+          <div className="self-end">
+            <UserChat>
+              <p>saya sakit kepala lagi</p>
+            </UserChat>
+          </div>
+          <div className="flex gap-1.5 bg-accent/50 w-fit py-2 px-3 border-dashed border-2 rounded-sm">
+            {/* DISK GENERATOR */}
+            <div className="relative w-5 h-5">
+              <div className="absolute inset-0 rounded-full animate-spin bg-linear-to-t from-orange-500 via-pink-600 to-purple-500 "></div>
+              <div className="absolute inset-1/6 rounded-full bg-accent"></div>
+            </div>
+            <p className="font-semibold text-sm animate-pulse">Sebentar ya...</p>
+          </div>
+        </div>
       </div>
     </div>
   );

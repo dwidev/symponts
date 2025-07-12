@@ -19,7 +19,7 @@ export default function MedicalHistoryPage() {
         <div className="flex flex-row">
           <Textarea
             placeholder="Describe your current condition"
-            className="bg-white min-h-30 max-w-[100%] resize-none"
+            className="min-h-30 max-w-[100%] resize-none"
           />
           <Button
             size="icon"
