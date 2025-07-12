@@ -31,7 +31,7 @@ export default function InputPrompt() {
 
   return (
     <BoxGradient isFocused={focus}>
-      <div className="px-5 py-2 rounded-2xl w-full">
+      <div className="px-5 py-2 rounded-2xl w-full bg-white">
         <Textarea
           value={message}
           onChange={(e) => setMessage(e.target.value)}

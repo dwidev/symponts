@@ -31,10 +31,12 @@ export default function Navbar({ children }: { children: React.ReactNode }) {
 
   return (
     includeNav && (
-      <header className="z-20 top-0 w-full fixed bg-white dark:bg-black">
+      <header className="z-20 top-0 w-full fixed  dark:bg-black">
         <div className="flex flex-row items-center justify-between px-15 py-2">
           <div className="flex flex-row items-center">
-            <h1 className="font-bold mr-3">SymptomAI</h1>
+            <Link href="/new">
+              <h1 className="font-bold mr-3">SymptomAI</h1>
+            </Link>
             <button
               className="p-2 mr-5 rounded-full border hover:bg-gray-200 dark:hover:bg-gray-700 transition cursor-pointer"
               aria-label="Toggle theme"

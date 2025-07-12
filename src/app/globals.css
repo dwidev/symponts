@@ -121,6 +121,10 @@
   .bubble-chat {
     @apply bg-gray-50 rounded-2xl p-2 mb-2;
   }
+
+  .app-gradient {
+    @apply bg-gradient-to-r from-orange-500 via-pink-600 to-purple-500;
+  }
 }
 
 @layer base {
