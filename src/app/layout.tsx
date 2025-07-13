@@ -27,11 +27,11 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning className={`${inter.variable}`}>
       <body className="antialiased w-screen h-screen">
         <AppProvider>
-          <Navbar>
+          {/* <Navbar>
             <Suspense fallback={<AvatarSkeleton />}>
               <UserAvatar />
             </Suspense>
-          </Navbar>
+          </Navbar> */}
           <main className="main-layout-container">{children}</main>
         </AppProvider>
       </body>

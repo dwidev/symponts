@@ -23,7 +23,7 @@ const ChatBuilder = () => {
   }, [chat]);
 
   return (
-    <div className="flex flex-col justify-center items-center">
+    <div className="flex flex-col sm:justify-center sm:items-center">
       <div className="sm:w-2xl sm:px-5">
         {isLoading && <ChatListSkeleton />}
         {!isLoading &&

@@ -17,7 +17,9 @@ export default async function UserAvatar() {
         className="object-center rounded-full"
         alt="user avatar"
       />
-      <AvatarFallback>CN</AvatarFallback>
+      <AvatarFallback>
+        {(data.user?.name ?? "")[0].toUpperCase()}
+      </AvatarFallback>
     </Avatar>
   );
 }
