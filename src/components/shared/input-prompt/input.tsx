@@ -73,7 +73,7 @@ export default function InputPrompt() {
             </div>
             <Button
               size="icon"
-              className="size-9 rounded-full transition hover:scale-105 shadow-xl"
+              className="size-9 rounded-full transition hover:scale-105 shadow-xl app-gradient"
               onClick={() => {
                 if (message == "") return;
                 sendChat({ message });

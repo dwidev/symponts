@@ -5,6 +5,7 @@ import React from "react";
 import InputPrompt from "./input";
 import { usePathname } from "next/navigation";
 import { Button } from "@/components/ui/button";
+import BoxGradient from "@/components/ui/box-gradient";
 
 export default function PropmtSection() {
   const h = usePathname();
@@ -18,13 +19,18 @@ export default function PropmtSection() {
             <div className="flex flex-wrap gap-2 mb-1">
               {[0, 1, 2, 3].map((e) => {
                 return (
-                  <Button
+                  <BoxGradient
                     key={e}
-                    variant="ghost"
-                    className="bg-white px-4 py-2 rounded-full transition hover:scale-105 shadow-2xl"
+                    isFocused
+                    className="rounded-full transition hover:scale-105"
                   >
-                    <p className="text-sm text-gray-600">Saya sakit kepala</p>
-                  </Button>
+                    <Button
+                      variant="ghost"
+                      className="bg-white px-4 py-2 rounded-full shadow-2xl"
+                    >
+                      <p className="text-sm text-gray-600">Saya sakit kepala</p>
+                    </Button>
+                  </BoxGradient>
                 );
               })}
             </div>

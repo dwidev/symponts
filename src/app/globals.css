@@ -123,7 +123,7 @@
   }
 
   .app-gradient {
-    @apply bg-gradient-to-r from-orange-500 via-pink-600 to-purple-500;
+    @apply bg-gradient-to-r from-cyan-300 via-sky-300 to-blue-400;
   }
 }
 
