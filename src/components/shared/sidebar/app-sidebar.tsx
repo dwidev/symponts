@@ -1,7 +1,7 @@
 import Header from "./header";
-import Content from "./content";
 import { Sidebar, SidebarProvider } from "@/components/ui/sidebar";
 import Footer from "./footer";
+import Content from "./content";
 
 export default function AppSideBar({
   children,

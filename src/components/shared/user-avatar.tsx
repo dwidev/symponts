@@ -25,5 +25,5 @@ export default async function UserAvatar() {
 }
 
 export function AvatarSkeleton() {
-  return <Skeleton className="w-10 h-10 rounded-full bg-gray-300" />;
+  return <Skeleton className="w-10 h-10 rounded-full bg-accent" />;
 }
