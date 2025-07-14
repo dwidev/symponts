@@ -8,7 +8,7 @@ const BoxGradient = ({
 }: {
   children: React.ReactNode;
   isFocused: boolean;
-  className: string;
+  className?: string;
 }) => {
   return (
     <div
