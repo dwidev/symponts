@@ -23,8 +23,12 @@ export default function InputPrompt() {
   const router = useRouter();
   const [message, setMessage] = useState("");
   const [focus, setFocus] = useState(false);
+  const utils = trpc.useUtils();
+
   const { mutate: sendChat, isPending } = trpc.chat.create.useMutation({
     onSuccess: ({ id }) => {
+      setMessage("");
+      utils.chat.recents.invalidate();
       router.push(`/chat/${id}`);
     },
   });
