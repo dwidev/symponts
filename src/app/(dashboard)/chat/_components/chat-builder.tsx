@@ -8,6 +8,7 @@ import { Message } from "@/types/chats";
 import BotChat from "@/components/shared/chat/botchat";
 import { useParams } from "next/navigation";
 import ChatListSkeleton from "./chat-list-skeleton";
+import LoadingIndicator from "@/components/ui/loading-indicator";
 
 const ChatBuilder = () => {
   const { chatid } = useParams();
@@ -57,11 +58,10 @@ const ChatBuilder = () => {
           </div>
           <div className="flex gap-1.5 bg-accent/50 w-fit py-2 px-3 border-dashed border-2 rounded-sm">
             {/* DISK GENERATOR */}
-            <div className="relative w-5 h-5">
-              <div className="absolute inset-0 rounded-full animate-spin app-gradient"></div>
-              <div className="absolute inset-1/6 rounded-full bg-accent"></div>
-            </div>
-            <p className="font-semibold text-sm animate-pulse">Sebentar ya...</p>
+            <LoadingIndicator />
+            <p className="font-semibold text-sm animate-pulse">
+              Sebentar ya...
+            </p>
           </div>
         </div>
       </div>
