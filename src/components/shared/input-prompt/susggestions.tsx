@@ -21,8 +21,8 @@ export default function Susggestions() {
 
   const { mutate: sendChat, isPending } = trpc.chat.create.useMutation({
     onSuccess: ({ id }) => {
-      utils.chat.recents.invalidate();
       router.push(`/chat/${id}`);
+      utils.chat.recents.invalidate();
     },
   });
 
@@ -71,7 +71,7 @@ export default function Susggestions() {
       {memoSugest.map((data) => {
         const isLoading = sendItem == data.text;
         return (
-          <FadeBlur key={data.id} duration={0.65}>
+          <FadeBlur key={data.id} duration={0.8}>
             <BoxGradient
               isFocused
               className="rounded-full transition hover:scale-105 size-auto"
