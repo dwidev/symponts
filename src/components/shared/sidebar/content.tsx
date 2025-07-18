@@ -7,12 +7,13 @@ import {
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
 import React from "react";
-import { MoreHorizontal } from "lucide-react";
 import { useParams } from "next/navigation";
-import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { Skeleton } from "@/components/ui/skeleton";
 import { trpc } from "@/trpc/client";
+import { DeleteRecentsDialog } from "./dialog/delete-recents";
+import { Button } from "@/components/ui/button";
+import { BsStarFill } from "react-icons/bs";
 
 export default function Content() {
   const params = useParams();
@@ -63,13 +64,18 @@ export default function Content() {
                       className="flex justify-between [&:hover_.menu-button]:opacity-100"
                     >
                       <span className="truncate">{message.messageText}</span>
-                      <Button
-                        variant="ghost"
-                        size="icon"
-                        className="app-gradient w-6 h-6 rounded-sm opacity-0 menu-button transition-opacity duration-200"
+                      <div
+                        className="opacity-0 menu-button transition-opacity duration-200 flex gap-1"
                       >
-                        <MoreHorizontal className="w-4 h-4 text-white" />
-                      </Button>
+                        <Button
+                          variant="ghost"
+                          size="icon"
+                          className="bg-fav w-6 h-6 rounded-s"
+                        >
+                          <BsStarFill className="w-4 h-4 text-white" />
+                        </Button>
+                        <DeleteRecentsDialog />
+                      </div>
                     </Link>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
