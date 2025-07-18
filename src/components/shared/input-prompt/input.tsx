@@ -20,12 +20,9 @@ import BoxGradient from "../../ui/box-gradient";
 import { AnimatePresence } from "motion/react";
 import Susggestions from "./susggestions";
 import { trpc } from "@/trpc/client";
-import { usePathname, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 
-export default function InputPrompt() {
-  const h = usePathname();
-  const isNew = h.includes("new");
-
+export default function InputPrompt({ isNew }: { isNew: boolean }) {
   const [message, setMessage] = useState("");
   const [focus, setFocus] = useState(false);
 
@@ -47,7 +44,7 @@ export default function InputPrompt() {
 
   return (
     <>
-      <AnimatePresence>
+      <AnimatePresence mode="wait">
         {isNew && <Susggestions onSend={handleSend} isLoading={isPending} />}
       </AnimatePresence>
       <BoxGradient isFocused={focus}>
