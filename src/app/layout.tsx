@@ -1,10 +1,8 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import Navbar from "@/components/shared/navbar";
 import AppProvider from "@/components/providers";
-import UserAvatar, { AvatarSkeleton } from "@/components/shared/user-avatar";
-import { Suspense } from "react";
+import { Particles } from "@/components/magicui/particles";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -26,6 +24,9 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning className={`${inter.variable}`}>
       <body className="antialiased w-screen h-screen">
+        <div className="absolute overflow-hidden size-full">
+          <Particles color="blue" quantity={500} size={0.3} />
+        </div>
         <AppProvider>
           {/* <Navbar>
             <Suspense fallback={<AvatarSkeleton />}>

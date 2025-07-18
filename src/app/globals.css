@@ -115,7 +115,7 @@
 
 @layer components {
   .main-layout-container {
-    @apply w-screen h-screen;
+    @apply w-screen h-screen z-50;
   }
 
   .bubble-chat {
