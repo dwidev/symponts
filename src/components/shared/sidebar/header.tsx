@@ -16,10 +16,11 @@ export default function Header() {
       </div>
       <BoxGradient isFocused={true}>
         <Button
-          className="w-full h-auto rounded-xl py-3 cursor-pointer shadow-xl bg-white text-primary hover:bg-transparent"
+          className="w-full h-auto rounded-xl py-3 cursor-pointer shadow-xl bg-transparent text-black"
+          variant={"ghost"}
           asChild
         >
-          <Link href="/new" className="text-black">
+          <Link href="/new">
             <BrainCircuit />
             <span className="font-semibold">Deteksi Gejala Baru</span>
           </Link>

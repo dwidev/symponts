@@ -23,7 +23,7 @@ export default function PropmtSection() {
         damping: isNew ? 11 : 13,
       }}
     >
-      <div className="flex flex-col gap-5 bg-white px-5">
+      <div className="flex flex-col gap-5 px-5">
         <InputPrompt isNew={isNew} />
         <div className="flex self-center items-start w-[90%]">
           <AlertCircle size="15" className="text-gray-500" />

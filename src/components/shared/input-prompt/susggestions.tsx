@@ -74,13 +74,13 @@ export default function Susggestions({ onSend, isLoading }: SusggestionsProps) {
                 disabled={isLoading}
                 onClick={() => handleClick(data.text)}
                 variant="ghost"
-                className="bg-white size-auto px-6 py-[7px] rounded-full shadow-2xl"
+                className="bg-white dark:bg-sky-200 size-auto px-6 py-[7px] rounded-full shadow-2xl text-gray-600 dark:hover:text-white disabled:bg-transparent"
               >
                 <div className="flex items-center gap-1">
                   {isLoading && isLoading && (
                     <LoaderIcon className="animate-spin" />
                   )}
-                  <p className="text-[11px] text-gray-600">{data.text}</p>
+                  <p className="text-[11px]">{data.text}</p>
                 </div>
               </Button>
             </BoxGradient>

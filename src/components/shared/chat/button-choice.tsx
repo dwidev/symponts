@@ -27,7 +27,7 @@ export default function ButtonAnswerChoice({
                 <Input
                   key={index}
                   placeholder="type other.."
-                  className="w-32 bg-white"
+                  className="w-32 "
                   onChange={onChangeOther}
                 />
               );

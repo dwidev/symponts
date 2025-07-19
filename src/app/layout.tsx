@@ -22,10 +22,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning className={`${inter.variable}`}>
+    <html lang="en" suppressHydrationWarning className={`${inter.variable} dark`}>
       <body className="antialiased w-screen h-screen">
-        <div className="absolute overflow-hidden size-full">
-          <Particles color="blue" quantity={500} size={0.3} />
+        <div className="absolute overflow-hidden w-screen h-screen z-[-1]">
+          <Particles
+            color="#ffffff"
+            quantity={500}
+            size={0.3}
+            className="h-screen w-screen"
+          />
         </div>
         <AppProvider>
           {/* <Navbar>

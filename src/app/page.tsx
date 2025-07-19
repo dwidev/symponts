@@ -59,7 +59,7 @@ function SignIn(): React.JSX.Element {
         await signIn("github");
       }}
     >
-      <Button type="submit" className="flex flex-row rounded-none w-36 h-12">
+      <Button type="submit" className="flex flex-row rounded-none w-36 h-12 app-gradient text-black">
         <FaGithub /> Sign in
       </Button>
     </form>
