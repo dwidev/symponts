@@ -125,6 +125,9 @@
   .app-gradient {
     @apply bg-gradient-to-r from-cyan-300 via-sky-300 to-blue-400;
   }
+  .app-dark-gradient {
+    @apply bg-gradient-to-r from-slate-700 via-cyan-800 to-blue-800 shadow-2xl shadow-cyan-500/30;
+  }
   .bg-delete {
     @apply bg-gradient-to-r from-red-800 via-red-600 to-red-400 hover:brightness-110 transition-all duration-200;
   }

@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import AppProvider from "@/components/providers";
 import { Particles } from "@/components/magicui/particles";
+import Navbar from "@/components/shared/navbar";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -22,7 +23,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning className={`${inter.variable} dark`}>
+    <html
+      lang="en"
+      suppressHydrationWarning
+      className={`${inter.variable} dark`}
+    >
       <body className="antialiased w-screen h-screen">
         <div className="absolute overflow-hidden w-screen h-screen z-[-1]">
           <Particles
@@ -33,11 +38,7 @@ export default function RootLayout({
           />
         </div>
         <AppProvider>
-          {/* <Navbar>
-            <Suspense fallback={<AvatarSkeleton />}>
-              <UserAvatar />
-            </Suspense>
-          </Navbar> */}
+          <Navbar />
           <main className="main-layout-container">{children}</main>
         </AppProvider>
       </body>
