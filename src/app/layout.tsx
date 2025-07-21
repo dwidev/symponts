@@ -23,11 +23,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en"
-      suppressHydrationWarning
-      className={`${inter.variable} dark`}
-    >
+    <html suppressHydrationWarning className={`${inter.variable}`}>
       <body className="antialiased w-screen h-screen">
         <div className="absolute overflow-hidden w-screen h-screen z-[-1]">
           <Particles
