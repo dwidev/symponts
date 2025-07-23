@@ -1,6 +1,6 @@
 import { createTRPCReact } from "@trpc/react-query";
 import { AppRouter } from "../router";
-import { httpLink } from "@trpc/client";
+import { httpLink, httpSubscriptionLink, splitLink } from "@trpc/client";
 import type { QueryClient } from "@tanstack/react-query";
 import { makeQueryClient } from "./query.client";
 
@@ -29,6 +29,16 @@ export function makeTRPCClient() {
   const url = getUrl();
 
   return trpc.createClient({
-    links: [httpLink({ url })],
+    links: [
+      splitLink({
+        condition: (op) => op.type === "subscription",
+        true: httpSubscriptionLink({
+          url,
+        }),
+        false: httpLink({
+          url,
+        }),
+      }),
+    ],
   });
 }

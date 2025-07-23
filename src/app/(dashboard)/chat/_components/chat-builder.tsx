@@ -17,6 +17,13 @@ const ChatBuilder = () => {
   });
   const [messages, setMessages] = useState<Message[]>([]);
 
+  trpc.ai.generate.useSubscription(undefined, {
+    enabled: false,
+    onData: (data) => {
+      console.log(data?.question?.title);
+    },
+  });
+
   useEffect(() => {
     if (!chat) return;
     const c = chat.messages.map((e) => ({ ...e, onStream: false }));

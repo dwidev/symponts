@@ -29,9 +29,9 @@ export const symptomAgentSchema = z.object({
     .describe(
       "True jika AI ingin melanjutkan bertanya, false jika sudah selesai"
     ),
-  question: z
-    .array(questionObjectSchema)
-    .describe("Pertanyaan yang akan diberikan ke user"),
+  question: questionObjectSchema.describe(
+    "Pertanyaan yang akan diberikan ke user"
+  ),
 });
 
 export type SympontResponse = z.infer<typeof symptomAgentSchema>;
