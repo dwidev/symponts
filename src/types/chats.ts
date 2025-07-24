@@ -12,3 +12,7 @@ export type Chat = Prisma.ChatGetPayload<{
 export type Message = Prisma.MessageGetPayload<{
   select: typeof MessageSelect;
 }>;
+
+export type MessageStream = Message & {
+  onStream?: boolean;
+};

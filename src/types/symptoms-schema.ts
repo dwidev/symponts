@@ -1,4 +1,5 @@
 import z from "zod";
+import { Message } from "./chats";
 
 const questionObjectSchema = z.object({
   questionId: z.string().describe("Id pertanyaan"),
@@ -35,3 +36,40 @@ export const symptomAgentSchema = z.object({
 });
 
 export type SympontResponse = z.infer<typeof symptomAgentSchema>;
+
+export function transformToMessage(source: SympontResponse): Message | null {
+  if (!source) {
+    return null;
+  }
+  // Tentukan messageText berdasarkan prioritas
+  let messageText = "";
+  if (source.nextAction === false) {
+    messageText = source.summary.content;
+  } else if (source.question?.title) {
+    messageText = source.question.title;
+  } else {
+    messageText = "";
+  }
+
+  // Buat uiElement jika ada question
+  let uiElement = null;
+
+  if (source.question) {
+    uiElement = {
+      id: source.question.questionId || crypto.randomUUID(),
+      elementType: source.question.type || "free-text",
+      promptText: source.question.title || "",
+      configuration: JSON.stringify({
+        answerOption: source.question.answerOption,
+      }),
+      createdAt: new Date(),
+      expiresAt: null,
+    };
+  }
+
+  return {
+    senderType: "ASSISTANT",
+    messageText,
+    uiElement,
+  };
+}

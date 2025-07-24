@@ -2,7 +2,10 @@
 import ScrollToBottom from "@/components/shared/chat/scroll-to-bottom";
 import ChatBuilder from "../_components/chat-builder";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { useChat } from "../_components/use-chat";
+import { useParams } from "next/navigation";
+import { trpc } from "@/trpc/client";
 
 export default function ChatsPage() {
   const scrollAreaRef = useRef<HTMLDivElement | null>(null);
@@ -37,6 +40,18 @@ export default function ChatsPage() {
     }
   };
 
+  const { setMessages, messages } = useChat();
+  const { chatid } = useParams();
+  const { data: chat, isLoading } = trpc.chat.list.useQuery({
+    chatId: chatid as string,
+  });
+
+  useEffect(() => {
+    if (!chat) return;
+    const c = chat.messages.map((e) => ({ ...e, onStream: false }));
+    setMessages(c);
+  }, [chat, setMessages]);
+
   return (
     <div className="flex-1 w-full h-full relative overflow-hidden">
       <ScrollArea
@@ -45,7 +60,7 @@ export default function ChatsPage() {
         className="w-full h-full overflow-y-auto"
       >
         <div className="h-full overflow-y-auto px-4 pb-15 pt-20">
-          <ChatBuilder />
+          <ChatBuilder messages={messages} isLoading={isLoading} />
         </div>
       </ScrollArea>
 

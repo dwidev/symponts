@@ -6,7 +6,6 @@ import { Button } from "@/components/ui/button";
 import ButtonAnswerChoice from "@/components/shared/chat/button-choice";
 import DatePickerAnswer from "@/components/shared/chat/date-picker";
 import { BotUIElement } from "@/types/chats";
-import { UserChat } from "./userchat";
 
 export function UiElementsBuilder({
   element,
@@ -17,7 +16,7 @@ export function UiElementsBuilder({
 }) {
   const [valueText, setValue] = useState("");
   return (
-    <UserChat>
+    <div className="mt-2">
       {element.elementType == "single-choice" && (
         <ButtonAnswerChoice
           choices={[]}
@@ -72,6 +71,6 @@ export function UiElementsBuilder({
           </Button>
         </div>
       )}
-    </UserChat>
+    </div>
   );
 }
