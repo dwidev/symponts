@@ -10,7 +10,7 @@ export default function AppProvider({
 }) {
   return (
     <React.Fragment>
-      <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+      <ThemeProvider attribute="class" enableSystem>
         <SessionProvider>
           <TanstackProvider>{children}</TanstackProvider>
         </SessionProvider>

@@ -54,10 +54,12 @@ function useLandingChats() {
   }, [step]);
 
   useEffect(() => {
-    if (chat.length == 0 && step == 0) {
-      onNext();
+    if (ref.current == 0) {
+      setChat([dummyChat[0]]);
+      ref.current += 1;
+      setStep(1);
     }
-  }, [chat.length, onNext, step]);
+  }, [ref]);
 
   const value = {
     chat,
